@@ -2,3 +2,7 @@ node_modules/
 *.xlsx
 *.xls
 .claude/
+
+# 내부 문서
+사전설문 응답 기록.md
+# 나의 워크샵 스킬 설계서.md
