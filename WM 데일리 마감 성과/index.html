@@ -29,15 +29,19 @@
   .modal-close:hover { color: #333; }
 
   /* Upload boxes inside modal */
-  .upload-grid { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
-  .upload-box { flex: 1; min-width: 180px; background: #f8f9fa; border: 2px dashed #ccc; border-radius: 12px; padding: 20px 14px; text-align: center; cursor: pointer; transition: all 0.2s; position: relative; }
+  .upload-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+  .upload-box { display: flex; align-items: center; gap: 14px; background: #f8f9fa; border: 2px dashed #ccc; border-radius: 12px; padding: 14px 18px; cursor: pointer; transition: all 0.2s; position: relative; }
   .upload-box:hover { border-color: #1a73e8; background: #f0f4ff; }
   .upload-box.loaded { border-color: #34a853; border-style: solid; background: #f0faf3; }
   .upload-box input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
-  .upload-box .icon { font-size: 28px; margin-bottom: 4px; }
+  .upload-box .icon { font-size: 24px; flex-shrink: 0; }
+  .upload-box .upload-info { flex: 1; min-width: 0; }
   .upload-box .label { font-size: 13px; font-weight: 600; color: #555; }
-  .upload-box .sub { font-size: 11px; color: #999; margin-top: 4px; }
-  .upload-box .status { font-size: 11px; color: #34a853; font-weight: 600; margin-top: 6px; display: none; }
+  .upload-box .sub { font-size: 11px; color: #999; margin-top: 2px; }
+  .upload-box .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 4px; margin-right: 5px; vertical-align: middle; line-height: 17px; }
+  .badge-overwrite { background: #fff3e0; color: #e67700; border: 1px solid #e6770044; }
+  .badge-accumulate { background: #e8f0fe; color: #1a73e8; border: 1px solid #1a73e844; }
+  .upload-box .status { font-size: 11px; color: #34a853; font-weight: 600; margin-top: 4px; display: none; }
   .upload-box.loaded .status { display: block; }
   .upload-box .progress-bar { width: 100%; height: 4px; background: #e0e0e0; border-radius: 2px; margin-top: 8px; overflow: hidden; display: none; }
   .upload-box .progress-bar.active { display: block; }
@@ -51,8 +55,10 @@
   .file-list { margin-top: 8px; text-align: left; max-height: 120px; overflow-y: auto; }
   .file-item { display: flex; align-items: center; gap: 6px; font-size: 11px; padding: 2px 0; color: #333; }
   .file-item .file-icon { color: #34a853; font-size: 13px; }
-  .file-item .file-name { font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .file-item .file-name { font-weight: 500; word-break: break-all; }
   .file-item .file-count { color: #1a73e8; font-weight: 600; white-space: nowrap; }
+  .file-item .btn-file-del { background: none; border: 1px solid #ddd; color: #999; font-size: 10px; cursor: pointer; padding: 0 4px; border-radius: 3px; line-height: 16px; flex-shrink: 0; }
+  .file-item .btn-file-del:hover { color: #ea4335; border-color: #ea4335; background: #fde7e9; }
 
   /* Storage panel inside modal */
   .storage-row { padding: 12px 0; font-size: 13px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; border-top: 1px solid #eee; margin-top: 8px; }
@@ -93,22 +99,22 @@
   .group-header.talkis-group { background: #b39ddb; color: #fff; }
 
   .perf-table-wrap { overflow-x: auto; background: #fff; border-radius: 0 0 10px 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); border: 1px solid #e0e0e0; border-top: none; }
-  .perf-table { font-size: 11px; min-width: 1500px; width: 100%; border-collapse: collapse; }
-  .perf-table th { padding: 4px 6px; text-align: center; font-size: 10px; font-weight: 600; color: #555; border-bottom: 1px solid #ddd; border-right: 1px solid #eee; white-space: nowrap; cursor: default; }
+  .perf-table { font-size: 13px; min-width: 1500px; width: 100%; border-collapse: collapse; }
+  .perf-table th { padding: 4px 6px; text-align: center; font-size: 12px; font-weight: 600; color: #555; border-bottom: 1px solid #ddd; border-right: 1px solid #eee; white-space: nowrap; cursor: default; }
   .perf-table th:last-child { border-right: none; }
-  .perf-table td { padding: 3px 6px; text-align: center; font-size: 11px; border-bottom: 1px solid #eee; border-right: 1px solid #f5f5f5; }
+  .perf-table td { padding: 3px 6px; text-align: center; font-size: 13px; border-bottom: 1px solid #eee; border-right: 1px solid #f5f5f5; }
   .perf-table td:last-child { border-right: none; }
   .perf-table tbody tr:hover td { background: #f0f4ff; }
   .perf-table tbody tr:nth-child(even) td { background: #fafbfc; }
   .perf-table tbody tr:nth-child(even):hover td { background: #f0f4ff; }
-  .perf-table td.name-cell { text-align: left; font-weight: 600; white-space: nowrap; }
-  .perf-table td.left { text-align: left; }
-  .perf-table .section-header th { font-size: 11px; font-weight: 700; border-bottom: 2px solid #ccc; padding: 5px 6px; }
+  .perf-table td.name-cell { text-align: center; font-weight: 600; white-space: nowrap; }
+  .perf-table td.left { text-align: center; }
+  .perf-table .section-header th { font-size: 13px; font-weight: 700; border-bottom: 2px solid #ccc; padding: 5px 6px; }
   .perf-table .sub-header th { background: #f5f7fa; border-bottom: 2px solid #ddd; }
   .perf-table tr.total-row td { background: #eef1f5; font-weight: 700; border-top: 2px solid #aaa; }
   .perf-table .rate-cell { font-weight: 600; }
   .perf-table .highlight { color: #1a73e8; font-weight: 700; }
-  .perf-table .rank-change { font-size: 11px; font-weight: 700; white-space: nowrap; }
+  .perf-table .rank-change { font-size: 13px; font-weight: 700; white-space: nowrap; }
   .perf-table .rank-up { color: #1a73e8; }
   .perf-table .rank-down { color: #c62828; }
   .perf-table .rank-same { color: #bbb; }
@@ -158,6 +164,28 @@
   .kpi-card.kpi-actual .kpi-value { color: #ef5350; }
   .kpi-card.kpi-rate .kpi-label { color: #c62828; }
   .kpi-card.kpi-rate .kpi-value { color: #c62828; }
+  .kpi-row-label { font-size: 12px; font-weight: 600; color: #666; margin: 8px 0 4px; }
+
+  /* Date range calendar */
+  .date-range-picker { position: relative; display: inline-flex; align-items: center; }
+  .date-range-display { padding: 4px 12px; border: 1px solid #ccc; border-radius: 6px; background: #fff; cursor: pointer; font-size: 13px; min-width: 210px; text-align: center; white-space: nowrap; }
+  .date-range-display:hover { border-color: #1a73e8; }
+  .calendar-popup { display: none; position: absolute; top: 100%; left: 0; z-index: 200; background: #fff; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); padding: 14px; margin-top: 4px; min-width: 280px; user-select: none; }
+  .calendar-popup.open { display: block; }
+  .calendar-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .calendar-nav button { background: none; border: none; cursor: pointer; font-size: 16px; padding: 4px 8px; border-radius: 4px; color: #555; }
+  .calendar-nav button:hover { background: #f0f4ff; color: #1a73e8; }
+  .calendar-nav .cal-title { font-size: 14px; font-weight: 700; color: #333; }
+  .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; text-align: center; }
+  .calendar-grid .day-header { font-size: 11px; font-weight: 600; color: #999; padding: 4px 0; }
+  .calendar-grid .day-cell { font-size: 12px; padding: 7px 4px; border-radius: 6px; cursor: pointer; transition: background 0.1s; }
+  .calendar-grid .day-cell:hover { background: #e3f2fd; }
+  .calendar-grid .day-cell.selected-start { background: #1a73e8; color: #fff; font-weight: 700; }
+  .calendar-grid .day-cell.selected-end { background: #1a73e8; color: #fff; font-weight: 700; }
+  .calendar-grid .day-cell.in-range { background: #e3f2fd; }
+  .calendar-grid .day-cell.other-month { color: #ccc; }
+  .calendar-grid .day-cell.today { font-weight: 700; box-shadow: inset 0 0 0 1px #1a73e8; }
+  .cal-hint { font-size: 11px; color: #1a73e8; text-align: center; margin-top: 8px; font-weight: 600; }
 
   /* Debug detail modal */
   .detail-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 2000; justify-content: center; align-items: center; }
@@ -197,6 +225,20 @@
   </div>
 </div>
 
+<!-- Auth Modal -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal" style="max-width:360px;text-align:center;">
+    <button class="modal-close" onclick="document.getElementById('authModal').classList.remove('active')">&times;</button>
+    <h2 style="margin-bottom:16px;">업로드 인증</h2>
+    <div style="display:flex;flex-direction:column;gap:10px;align-items:center;">
+      <input type="text" id="authId" placeholder="아이디" style="width:100%;padding:8px 12px;border:1px solid #ccc;border-radius:6px;font-size:14px;">
+      <input type="password" id="authPw" placeholder="비밀번호" style="width:100%;padding:8px 12px;border:1px solid #ccc;border-radius:6px;font-size:14px;" onkeydown="if(event.key==='Enter')authLogin()">
+      <div id="authError" style="color:#c62828;font-size:12px;display:none;">아이디 또는 비밀번호가 일치하지 않습니다.</div>
+      <button onclick="authLogin()" style="width:100%;padding:10px;border:none;border-radius:6px;background:#1a73e8;color:#fff;font-size:14px;font-weight:600;cursor:pointer;">로그인</button>
+    </div>
+  </div>
+</div>
+
 <!-- Upload Modal -->
 <div class="modal-overlay" id="uploadModal">
   <div class="modal">
@@ -206,31 +248,34 @@
       <div class="upload-box" id="uploadRoster">
         <button class="btn-clear" onclick="clearRoster(event)" title="명단 초기화">✕</button>
         <div class="icon">👥</div>
-        <div class="label">명단 파일</div>
-        <div class="sub">WM_근태보고_그룹_yymm.xls</div>
-        <div class="status" id="rosterStatus"></div>
-        <div class="file-list" id="rosterFileList"></div>
-        <div class="progress-bar" id="progressRoster"><div class="progress-fill"></div></div>
+        <div class="upload-info">
+          <div class="label"><span class="badge badge-overwrite">덮어쓰기</span>명단 파일 <span class="sub">WM_근태보고_그룹_yyyymm.xls</span></div>
+          <div class="status" id="rosterStatus"></div>
+          <div class="file-list" id="rosterFileList"></div>
+          <div class="progress-bar" id="progressRoster"><div class="progress-fill"></div></div>
+        </div>
         <input type="file" accept=".xlsx,.xls" id="fileRoster">
       </div>
       <div class="upload-box" id="uploadDb">
         <button class="btn-clear" onclick="clearDb(event)" title="DB수 초기화">✕</button>
         <div class="icon">📂</div>
-        <div class="label">DB수 파일 (일일)</div>
-        <div class="sub">WM_고객관리_yyyy-mm-dd.xlsx</div>
-        <div class="status" id="dbStatus"></div>
-        <div class="file-list" id="dbFileList"></div>
-        <div class="progress-bar" id="progressDb"><div class="progress-fill"></div></div>
+        <div class="upload-info">
+          <div class="label"><span class="badge badge-accumulate">누적 저장</span>DB수 파일 (일일) <span class="sub">WM_고객관리_yyyy-mm-dd.xlsx</span></div>
+          <div class="status" id="dbStatus"></div>
+          <div class="file-list" id="dbFileList"></div>
+          <div class="progress-bar" id="progressDb"><div class="progress-fill"></div></div>
+        </div>
         <input type="file" accept=".xlsx,.xls" id="fileDb" multiple>
       </div>
       <div class="upload-box" id="uploadContract">
         <button class="btn-clear" onclick="clearContract(event)" title="계약수 초기화">✕</button>
-        <div class="icon">📂</div>
-        <div class="label">계약수 파일 (월 누적)</div>
-        <div class="sub">신청자관리_yyyy_mm_dd.xls</div>
-        <div class="status" id="contractStatus"></div>
-        <div class="file-list" id="contractFileList"></div>
-        <div class="progress-bar" id="progressContract"><div class="progress-fill"></div></div>
+        <div class="icon">📋</div>
+        <div class="upload-info">
+          <div class="label"><span class="badge badge-overwrite">덮어쓰기</span>계약수 파일 (월 누적) <span class="sub">신청자관리_yyyy-mm-dd.xls</span></div>
+          <div class="status" id="contractStatus"></div>
+          <div class="file-list" id="contractFileList"></div>
+          <div class="progress-bar" id="progressContract"><div class="progress-fill"></div></div>
+        </div>
         <input type="file" accept=".xlsx,.xls" id="fileContract">
       </div>
     </div>
@@ -240,15 +285,15 @@
       <button onclick="refreshStorageDisplay()">새로고침</button>
       <button class="danger" onclick="clearStorage()">전체 초기화</button>
     </div>
+    <div class="storage-row" style="flex-direction:column;align-items:flex-start;gap:6px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span class="storage-label">DB수 파일 아카이브:</span>
+        <button onclick="toggleArchiveList()">목록 보기</button>
+        <button class="danger" onclick="clearArchive()">아카이브 삭제</button>
+      </div>
+      <div id="archiveList" style="display:none;width:100%;max-height:200px;overflow-y:auto;font-size:12px;"></div>
+    </div>
     <div id="statusBar"></div>
-  </div>
-</div>
-
-<!-- Detail Modal -->
-<div class="detail-overlay" id="detailOverlay" onclick="if(event.target===this)this.classList.remove('active')">
-  <div class="detail-modal">
-    <button class="close-btn" onclick="document.getElementById('detailOverlay').classList.remove('active')">&times;</button>
-    <div id="detailContent"></div>
   </div>
 </div>
 
@@ -258,12 +303,25 @@
     <div class="filter-bar">
       <div class="filter-row">
         <label class="filter-label">기간 :</label>
-        <input type="date" id="dateStart">
-        <span class="sep">~</span>
-        <input type="date" id="dateEnd">
+        <div class="date-range-picker">
+          <input type="hidden" id="dateStart">
+          <input type="hidden" id="dateEnd">
+          <button type="button" class="date-range-display" id="dateRangeBtn" onclick="toggleCalendar()">
+            <span id="dateRangeText">기간 선택</span>
+          </button>
+          <div class="calendar-popup" id="calendarPopup">
+            <div class="calendar-nav">
+              <button type="button" onclick="calNavMonth(-1)">◀</button>
+              <span class="cal-title" id="calTitle"></span>
+              <button type="button" onclick="calNavMonth(1)">▶</button>
+            </div>
+            <div class="calendar-grid" id="calendarGrid"></div>
+            <div class="cal-hint" id="calHint">시작일을 선택하세요</div>
+          </div>
+        </div>
         <div class="quick-btns">
-          <button class="quick-btn" onclick="setQuickDate('today', this)">오늘</button>
-          <button class="quick-btn" onclick="setQuickDate('yesterday', this)">전일</button>
+          <button class="quick-btn" onclick="setQuickDate('today', this)">당일</button>
+          <button class="quick-btn" onclick="setQuickDate('lastBizDay', this)">전영업일</button>
           <button class="quick-btn active" onclick="setQuickDate('thisMonth', this)">이번달</button>
           <button class="quick-btn" onclick="setQuickDate('1m', this)">1개월</button>
           <button class="quick-btn" onclick="setQuickDate('3m', this)">3개월</button>
@@ -293,11 +351,19 @@
           <div class="filter-panel" id="filterPanelPerson"></div>
         </div>
       </div>
+      <div class="kpi-row-label" id="kpiFilteredLabel">조회 기간</div>
       <div class="kpi-row">
-        <div class="kpi-card kpi-db"><div class="kpi-label">📋 DB수</div><div class="kpi-value" id="kpiDbCount">0</div></div>
-        <div class="kpi-card kpi-daily"><div class="kpi-label">⚡ 일계약수</div><div class="kpi-value" id="kpiDailyContract">0</div></div>
-        <div class="kpi-card kpi-actual"><div class="kpi-label">✅ 실계약수</div><div class="kpi-value" id="kpiActualContract">0</div></div>
-        <div class="kpi-card kpi-rate"><div class="kpi-label">📈 실계약률</div><div class="kpi-value" id="kpiContractRate">-</div></div>
+        <div class="kpi-card kpi-db"><div class="kpi-label">📋 DB수</div><div class="kpi-value" id="kpiFDb">0</div></div>
+        <div class="kpi-card kpi-daily"><div class="kpi-label">⚡ 일계약수</div><div class="kpi-value" id="kpiFDaily">0</div></div>
+        <div class="kpi-card kpi-actual"><div class="kpi-label">✅ 실계약수</div><div class="kpi-value" id="kpiFActual">0</div></div>
+        <div class="kpi-card kpi-rate"><div class="kpi-label">📈 실계약률</div><div class="kpi-value" id="kpiFRate">-</div></div>
+      </div>
+      <div class="kpi-row-label" id="kpiGlobalLabel">최근 영업일</div>
+      <div class="kpi-row">
+        <div class="kpi-card kpi-db"><div class="kpi-label">📋 DB수</div><div class="kpi-value" id="kpiGDb">0</div></div>
+        <div class="kpi-card kpi-daily"><div class="kpi-label">⚡ 일계약수</div><div class="kpi-value" id="kpiGDaily">0</div></div>
+        <div class="kpi-card kpi-actual"><div class="kpi-label">✅ 실계약수</div><div class="kpi-value" id="kpiGActual">0</div></div>
+        <div class="kpi-card kpi-rate"><div class="kpi-label">📈 실계약률</div><div class="kpi-value" id="kpiGRate">-</div></div>
       </div>
     </div>
   </div>
@@ -310,9 +376,12 @@
       <button class="tab-btn active" onclick="switchTab('main', this)">뇌새김</button>
       <button class="tab-btn" onclick="switchTab('talkis', this)">톡이즈</button>
       <div class="tab-actions">
-        <button class="btn-download" onclick="downloadPng()">🖼️ PNG 다운로드</button>
+        <button class="btn-download" onclick="downloadPng('eng')">🖼️ PNG(영어)</button>
+        <button class="btn-download" onclick="downloadPng('lang')">🖼️ PNG(제2외국어)</button>
+        <button class="btn-download" onclick="downloadPng('talkis')">🖼️ PNG(톡이즈)</button>
         <button class="btn-download" onclick="downloadExcel()">📊 Excel 다운로드</button>
-        <button class="btn-download" onclick="downloadHtml()">🌐 HTML 다운로드</button>
+        <button class="btn-download" onclick="downloadHtml('main')">🌐 HTML(뇌새김)</button>
+        <button class="btn-download" onclick="downloadHtml('talkis')">🌐 HTML(톡이즈)</button>
       </div>
     </div>
     <div class="tab-panel active" id="tabMain"></div>
@@ -325,10 +394,15 @@
 // ── State ──
 // ══════════════════════════════════════════════
 let contractData = null;
+let contractByMonth = {};
 let rosterMap = null;         // current active roster (latest month)
 let rosterByMonth = {};       // { 'YYYY-MM': Map(name → info) }
 let todayDbDate = null;
 let lastBuildDebug = {};  // { personName: { holDetails: [...] } }
+let currentTab = 'main';      // 'main' (뇌새김) or 'talkis'
+let kpiByTab = { main: null, talkis: null }; // cached KPI per tab
+let globalLatestDate = null;  // 업로드된 날짜 중 가장 최근 (전영업일)
+let fileJustUploaded = false; // 파일 업로드 직후에만 true
 
 // 명단 제외 대상
 const ROSTER_EXCLUDE = new Set(['(R_송내)유현미', '(R_송내)허선정', '(R_송내)이영혜', '(R_송내)이미현']);
@@ -341,6 +415,7 @@ const DB_COL = {
 };
 const CT_COL = {
   customerKey: 3, manager: 13, dbDate: 14, applicationDate: 15,
+  category: 16,
   mainGift: 21, undeliveredGift: 22, gift: 23,
   distributeDate: 41, returnDate: 42, brand: 71
 };
@@ -424,16 +499,46 @@ function extractMonthKey(filename) {
 }
 
 // ══════════════════════════════════════════════
-// ── Modal ──
+// ── Auth & Modal ──
 // ══════════════════════════════════════════════
+const _a = [97,87,53,109,98,49,57,105,97,87,52,61]; // encoded id
+const _b = [100,50,112,107,99,87,104,120,98,72,77,53,77,105,69,61]; // encoded pw
+let authPassed = false;
+
+function _d(arr) { return atob(arr.map(c => String.fromCharCode(c)).join('')); }
+
 function openModal() {
-  document.getElementById('uploadModal').classList.add('active');
+  if (authPassed) {
+    document.getElementById('uploadModal').classList.add('active');
+  } else {
+    document.getElementById('authId').value = '';
+    document.getElementById('authPw').value = '';
+    document.getElementById('authError').style.display = 'none';
+    document.getElementById('authModal').classList.add('active');
+    document.getElementById('authId').focus();
+  }
 }
+
+function authLogin() {
+  const id = document.getElementById('authId').value.trim();
+  const pw = document.getElementById('authPw').value;
+  if (id === _d(_a) && pw === _d(_b)) {
+    authPassed = true;
+    document.getElementById('authModal').classList.remove('active');
+    document.getElementById('uploadModal').classList.add('active');
+  } else {
+    document.getElementById('authError').style.display = 'block';
+  }
+}
+
 function closeModal() {
   document.getElementById('uploadModal').classList.remove('active');
 }
 document.getElementById('uploadModal').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeModal();
+});
+document.getElementById('authModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) e.target.classList.remove('active');
 });
 
 // ══════════════════════════════════════════════
@@ -444,6 +549,34 @@ function switchTab(tabId, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById(tabId === 'main' ? 'tabMain' : 'tabTalkis').classList.add('active');
+  currentTab = tabId;
+  displayKpi(currentTab);
+}
+
+function displayKpi(tab) {
+  const data = kpiByTab[tab];
+  if (!data) return;
+  const f = data.filtered;
+  if (f) {
+    document.getElementById('kpiFDb').textContent = f.db.toLocaleString();
+    document.getElementById('kpiFDaily').textContent = f.daily.toLocaleString();
+    document.getElementById('kpiFActual').textContent = f.actual.toLocaleString();
+    document.getElementById('kpiFRate').textContent = f.db > 0 ? (f.actual / f.db * 100).toFixed(1) + '%' : '-';
+  }
+  const g = data.global;
+  if (g) {
+    document.getElementById('kpiGDb').textContent = g.db.toLocaleString();
+    document.getElementById('kpiGDaily').textContent = g.daily.toLocaleString();
+    document.getElementById('kpiGActual').textContent = g.actual.toLocaleString();
+    document.getElementById('kpiGRate').textContent = g.db > 0 ? (g.actual / g.db * 100).toFixed(1) + '%' : '-';
+  }
+  const start = document.getElementById('dateStart').value;
+  const end = document.getElementById('dateEnd').value;
+  let filterLabel = '조회 기간';
+  if (start && end) filterLabel = start === end ? `조회: ${start}` : `조회: ${start} ~ ${end}`;
+  else if (!start && !end) filterLabel = '조회: 전체 기간';
+  document.getElementById('kpiFilteredLabel').textContent = filterLabel;
+  document.getElementById('kpiGlobalLabel').textContent = globalLatestDate ? `최근 영업일: ${globalLatestDate}` : '최근 영업일';
 }
 
 // ══════════════════════════════════════════════
@@ -480,7 +613,7 @@ function readExcel(file, callback, progressBarId) {
       const ws = wb.Sheets[wb.SheetNames[0]];
       const raw = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
       if (progressBarId) setProgress(progressBarId, 95, false);
-      callback(raw.slice(1));
+      callback(raw.slice(1), e.target.result);
       if (progressBarId) setProgress(progressBarId, 100, true);
     } catch (err) {
       showStatus(`파일 읽기 오류: ${err.message}`, 'error');
@@ -494,12 +627,13 @@ function readExcel(file, callback, progressBarId) {
 // ── IndexedDB ──
 // ══════════════════════════════════════════════
 const DB_NAME = 'dbPerfDashboard';
-const DB_VERSION = 4;
+const DB_VERSION = 6;
 const STORE_DATES = 'dates';
 const STORE_KEYS = 'keyMeta';
 const STORE_ROSTER = 'roster';       // key: 'YYYY-MM', value: array of roster rows
 const STORE_CONTRACT = 'contract';
 const STORE_FILEMETA = 'fileMeta';
+const STORE_ARCHIVE = 'fileArchive';
 
 function openDB() {
   return new Promise((resolve, reject) => {
@@ -511,6 +645,7 @@ function openDB() {
       if (!db.objectStoreNames.contains(STORE_ROSTER)) db.createObjectStore(STORE_ROSTER);
       if (!db.objectStoreNames.contains(STORE_CONTRACT)) db.createObjectStore(STORE_CONTRACT);
       if (!db.objectStoreNames.contains(STORE_FILEMETA)) db.createObjectStore(STORE_FILEMETA);
+      if (!db.objectStoreNames.contains(STORE_ARCHIVE)) db.createObjectStore(STORE_ARCHIVE);
     };
     req.onsuccess = () => resolve(req.result);
     req.onerror = () => reject(req.error);
@@ -661,7 +796,9 @@ async function accumulateDbData(rows) {
   }
 
   await refreshStorageDisplay();
-  return dates[dates.length - 1];
+  // Return info needed to undo this file later
+  const addedKeys = keyEntries.map(([k]) => k);
+  return { latestDate: dates[dates.length - 1], addedKeys, dateContributions: dateMap };
 }
 
 async function refreshStorageDisplay() {
@@ -678,11 +815,12 @@ async function refreshStorageDisplay() {
       req.onsuccess = () => resolve(req.result || []);
       req.onerror = () => resolve([]);
     });
-    const hasContract = await new Promise((resolve) => {
-      const req = tx.objectStore(STORE_CONTRACT).get('data');
-      req.onsuccess = () => resolve(!!req.result);
-      req.onerror = () => resolve(false);
+    const contractKeys = await new Promise((resolve) => {
+      const req = tx.objectStore(STORE_CONTRACT).getAllKeys();
+      req.onsuccess = () => resolve(req.result || []);
+      req.onerror = () => resolve([]);
     });
+    const hasContract = contractKeys.length > 0;
     db.close();
     const dates = keys.sort();
     const el = document.getElementById('storageDates');
@@ -715,6 +853,7 @@ async function clearStorage() {
     rosterMap = null;
     rosterByMonth = {};
     contractData = null;
+    contractByMonth = {};
     document.getElementById('rosterFileList').innerHTML = '';
     document.getElementById('dbFileList').innerHTML = '';
     document.getElementById('contractFileList').innerHTML = '';
@@ -782,6 +921,7 @@ async function clearContract(e) {
     await new Promise((resolve, reject) => { tx.oncomplete = resolve; tx.onerror = () => reject(tx.error); });
     db.close();
     contractData = null;
+    contractByMonth = {};
     document.getElementById('contractFileList').innerHTML = '';
     document.getElementById('uploadContract').classList.remove('loaded');
     document.getElementById('contractStatus').textContent = '';
@@ -802,11 +942,11 @@ async function saveRosterToDB(monthKey, rows) {
   }
 }
 
-async function saveContractToDB(rows) {
+async function saveContractToDB(monthKey, rows) {
   try {
     const db = await openDB();
     const tx = db.transaction(STORE_CONTRACT, 'readwrite');
-    tx.objectStore(STORE_CONTRACT).put(rows, 'data');
+    tx.objectStore(STORE_CONTRACT).put(rows, monthKey);
     await new Promise((resolve, reject) => { tx.oncomplete = resolve; tx.onerror = () => reject(tx.error); });
     db.close();
   } catch (err) {
@@ -814,11 +954,11 @@ async function saveContractToDB(rows) {
   }
 }
 
-async function saveFileMeta(type, fileName, rowCount) {
+async function saveFileMeta(type, fileName, rowCount, addedKeys, dateContributions) {
   try {
     const db = await openDB();
     let files = [];
-    if (type === 'db' || type === 'roster') {
+    if (type === 'db' || type === 'roster' || type === 'contract') {
       const txR = db.transaction(STORE_FILEMETA, 'readonly');
       const existing = await new Promise(resolve => {
         const req = txR.objectStore(STORE_FILEMETA).get(type);
@@ -827,7 +967,10 @@ async function saveFileMeta(type, fileName, rowCount) {
       });
       files = existing;
     }
-    files.push({ name: fileName, count: rowCount, date: fmtDateTime(new Date()) });
+    const entry = { name: fileName, count: rowCount, date: fmtDateTime(new Date()) };
+    if (addedKeys) entry.addedKeys = addedKeys;
+    if (dateContributions) entry.dateContributions = dateContributions;
+    files.push(entry);
     const tx = db.transaction(STORE_FILEMETA, 'readwrite');
     tx.objectStore(STORE_FILEMETA).put(files, type);
     await new Promise((resolve, reject) => { tx.oncomplete = resolve; tx.onerror = () => reject(tx.error); });
@@ -838,13 +981,164 @@ async function saveFileMeta(type, fileName, rowCount) {
   }
 }
 
+async function saveFileArchive(fileName, arrayBuffer) {
+  try {
+    const db = await openDB();
+    const tx = db.transaction(STORE_ARCHIVE, 'readwrite');
+    tx.objectStore(STORE_ARCHIVE).put({ data: arrayBuffer, date: fmtDateTime(new Date()) }, fileName);
+    await new Promise((resolve, reject) => { tx.oncomplete = resolve; tx.onerror = () => reject(tx.error); });
+    db.close();
+  } catch (err) {
+    console.error('파일 아카이브 저장 오류:', err);
+  }
+}
+
+async function toggleArchiveList() {
+  const el = document.getElementById('archiveList');
+  if (el.style.display !== 'none') { el.style.display = 'none'; return; }
+  try {
+    const db = await openDB();
+    const tx = db.transaction(STORE_ARCHIVE, 'readonly');
+    const store = tx.objectStore(STORE_ARCHIVE);
+    const items = [];
+    await new Promise((resolve, reject) => {
+      const req = store.openCursor();
+      req.onsuccess = e => {
+        const cursor = e.target.result;
+        if (cursor) {
+          items.push({ name: cursor.key, date: cursor.value?.date || '' });
+          cursor.continue();
+        } else {
+          resolve();
+        }
+      };
+      req.onerror = () => reject(req.error);
+    });
+    db.close();
+    if (items.length === 0) {
+      el.innerHTML = '<div style="color:#888;padding:4px 0;">저장된 파일이 없습니다.</div>';
+    } else {
+      el.innerHTML = items.map(f =>
+        `<div style="display:flex;align-items:center;gap:8px;padding:3px 0;border-bottom:1px solid #eee;">` +
+        `<span style="flex:1;word-break:break-all;">${f.name}</span>` +
+        `<span style="color:#888;white-space:nowrap;font-size:11px;">${f.date}</span>` +
+        `<button onclick="downloadArchiveFile('${f.name.replace(/'/g, "\\'")}')" style="padding:2px 8px;border:1px solid #ccc;border-radius:4px;background:#fff;cursor:pointer;font-size:11px;white-space:nowrap;">다운로드</button>` +
+        `</div>`
+      ).join('');
+    }
+    el.style.display = 'block';
+  } catch (err) {
+    console.error('아카이브 로드 오류:', err);
+    el.innerHTML = `<div style="color:#c62828;">아카이브 로드 오류: ${err.message}</div>`;
+    el.style.display = 'block';
+  }
+}
+
+async function downloadArchiveFile(fileName) {
+  try {
+    const db = await openDB();
+    const tx = db.transaction(STORE_ARCHIVE, 'readonly');
+    const item = await new Promise((resolve, reject) => {
+      const req = tx.objectStore(STORE_ARCHIVE).get(fileName);
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+    db.close();
+    if (!item || !item.data) { alert('파일 데이터를 찾을 수 없습니다.'); return; }
+    const blob = new Blob([item.data]);
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = fileName;
+    link.click();
+    URL.revokeObjectURL(link.href);
+  } catch (err) {
+    alert('다운로드 오류: ' + err.message);
+  }
+}
+
+async function clearArchive() {
+  if (!confirm('아카이브된 파일을 모두 삭제하시겠습니까?')) return;
+  try {
+    const db = await openDB();
+    const tx = db.transaction(STORE_ARCHIVE, 'readwrite');
+    tx.objectStore(STORE_ARCHIVE).clear();
+    await new Promise((resolve, reject) => { tx.oncomplete = resolve; tx.onerror = () => reject(tx.error); });
+    db.close();
+    document.getElementById('archiveList').innerHTML = '<div style="color:#888;padding:4px 0;">저장된 파일이 없습니다.</div>';
+    showStatus('아카이브가 삭제되었습니다.', 'success');
+  } catch (err) {
+    showStatus('아카이브 삭제 오류: ' + err.message, 'error');
+  }
+}
+
 function renderFileList(type, files) {
   const listId = { roster: 'rosterFileList', db: 'dbFileList', contract: 'contractFileList' }[type];
   const el = document.getElementById(listId);
   if (!el || !files || files.length === 0) { if (el) el.innerHTML = ''; return; }
-  el.innerHTML = files.map(f =>
-    `<div class="file-item"><span class="file-icon">✓</span><span class="file-name">${f.name}</span><span class="file-count">${Number(f.count).toLocaleString()}건</span></div>`
-  ).join('');
+  el.innerHTML = files.map((f, i) => {
+    const delBtn = type === 'db' ? `<button class="btn-file-del" onclick="deleteDbFileEntry(${i})" title="이 파일 삭제">✕</button>` : '';
+    return `<div class="file-item"><span class="file-icon">✓</span><span class="file-name">${f.name}</span><span class="file-count">${Number(f.count).toLocaleString()}건</span>${delBtn}</div>`;
+  }).join('');
+}
+
+async function deleteDbFileEntry(index) {
+  try {
+    const db = await openDB();
+    const txR = db.transaction(STORE_FILEMETA, 'readonly');
+    const files = await new Promise(resolve => {
+      const req = txR.objectStore(STORE_FILEMETA).get('db');
+      req.onsuccess = () => resolve(req.result || []);
+      req.onerror = () => resolve([]);
+    });
+    if (index < 0 || index >= files.length) return;
+    const entry = files[index];
+    if (!confirm(`"${entry.name}" 파일을 삭제하시겠습니까?`)) { db.close(); return; }
+
+    // Remove customer keys from keyMeta
+    const keysToRemove = entry.addedKeys || [];
+    // Subtract date contributions from dates store
+    const contributions = entry.dateContributions || {};
+
+    const stores = [STORE_KEYS, STORE_DATES, STORE_FILEMETA];
+    const tx = db.transaction(stores, 'readwrite');
+    const keyStore = tx.objectStore(STORE_KEYS);
+    for (const k of keysToRemove) keyStore.delete(k);
+
+    const dateStore = tx.objectStore(STORE_DATES);
+    for (const [date, persons] of Object.entries(contributions)) {
+      const existing = await new Promise(resolve => {
+        const req = dateStore.get(date);
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => resolve(null);
+      });
+      if (!existing) continue;
+      for (const [name, counts] of Object.entries(persons)) {
+        if (existing.persons[name]) {
+          existing.persons[name].total -= counts.total;
+          existing.persons[name].nonIN -= counts.nonIN;
+          existing.persons[name].inOnly -= counts.inOnly;
+          if (existing.persons[name].total <= 0) delete existing.persons[name];
+        }
+      }
+      if (Object.keys(existing.persons).length === 0) dateStore.delete(date);
+      else dateStore.put(existing, date);
+    }
+
+    files.splice(index, 1);
+    tx.objectStore(STORE_FILEMETA).put(files, 'db');
+    await new Promise((resolve, reject) => { tx.oncomplete = resolve; tx.onerror = () => reject(tx.error); });
+    db.close();
+
+    renderFileList('db', files);
+    if (files.length === 0) {
+      document.getElementById('uploadDb').classList.remove('loaded');
+      document.getElementById('dbStatus').textContent = '';
+    }
+    await refreshStorageDisplay();
+    showStatus(`"${entry.name}" 삭제 완료`, 'success');
+  } catch (err) {
+    showStatus(`파일 삭제 오류: ${err.message}`, 'error');
+  }
 }
 
 async function loadSavedFiles() {
@@ -865,9 +1159,15 @@ async function loadSavedFiles() {
       req.onerror = () => reject(req.error);
     });
 
-    const contractRows = await new Promise((resolve, reject) => {
-      const req = tx.objectStore(STORE_CONTRACT).get('data');
-      req.onsuccess = () => resolve(req.result || null);
+    const contractEntries = await new Promise((resolve, reject) => {
+      const store = tx.objectStore(STORE_CONTRACT);
+      const result = [];
+      const req = store.openCursor();
+      req.onsuccess = e => {
+        const cursor = e.target.result;
+        if (cursor) { result.push([cursor.key, cursor.value]); cursor.continue(); }
+        else resolve(result);
+      };
       req.onerror = () => reject(req.error);
     });
 
@@ -898,10 +1198,15 @@ async function loadSavedFiles() {
       const totalNames = Object.values(rosterByMonth).reduce((s, m) => Math.max(s, m.size), 0);
       document.getElementById('rosterStatus').textContent = `${totalNames}명 (저장됨, ${Object.keys(rosterByMonth).length}개월)`;
     }
-    if (contractRows) {
-      contractData = contractRows;
+    if (contractEntries.length > 0) {
+      contractByMonth = {};
+      for (const [monthKey, rows] of contractEntries) {
+        contractByMonth[monthKey] = rows;
+      }
+      const latestMonth = Object.keys(contractByMonth).sort().pop();
+      contractData = contractByMonth[latestMonth];
       document.getElementById('uploadContract').classList.add('loaded');
-      document.getElementById('contractStatus').textContent = `${contractData.length.toLocaleString()}건 (저장됨)`;
+      document.getElementById('contractStatus').textContent = `${contractData.length.toLocaleString()}건 (저장됨, ${Object.keys(contractByMonth).length}개월)`;
     }
 
     if (rosterMap && contractData) {
@@ -996,6 +1301,7 @@ document.getElementById('fileRoster').addEventListener('change', e => {
     document.getElementById('rosterStatus').textContent = `${parsed.size}명 (${monthKey})`;
     showStatus(`명단 로드: ${parsed.size}명 → ${monthKey} (자동 저장됨)`, 'success');
     populateFilters();
+    fileJustUploaded = true;
     await tryBuildTab4();
   }, 'progressRoster');
 });
@@ -1007,10 +1313,14 @@ document.getElementById('fileDb').addEventListener('change', e => {
   const total = files.length;
   setProgress('progressDb', 0, false);
   for (const file of files) {
-    readExcel(file, async data => {
+    readExcel(file, async (data, arrayBuffer) => {
       document.getElementById('uploadDb').classList.add('loaded');
-      todayDbDate = await accumulateDbData(data);
-      await saveFileMeta('db', file.name, data.length);
+      const result = await accumulateDbData(data);
+      if (result) {
+        todayDbDate = result.latestDate;
+        await saveFileMeta('db', file.name, data.length, result.addedKeys, result.dateContributions);
+      }
+      await saveFileArchive(file.name, arrayBuffer);
       processed++;
       document.getElementById('dbStatus').textContent = `${processed}/${total}개 파일 로드 완료`;
       setProgress('progressDb', Math.round(processed / total * 100), processed === total);
@@ -1018,6 +1328,7 @@ document.getElementById('fileDb').addEventListener('change', e => {
         showStatus(`DB수 로드: ${file.name} (${data.length.toLocaleString()}건)`, 'success');
       }
       if (processed === total) {
+        fileJustUploaded = true;
         await tryBuildTab4();
       }
     }, total === 1 ? 'progressDb' : null);
@@ -1027,13 +1338,17 @@ document.getElementById('fileDb').addEventListener('change', e => {
 document.getElementById('fileContract').addEventListener('change', e => {
   const file = e.target.files[0];
   if (!file) return;
+  const monthKey = extractMonthKey(file.name);
   readExcel(file, async data => {
-    contractData = data;
-    await saveContractToDB(data);
-    await saveFileMeta('contract', file.name, data.length);
+    contractByMonth[monthKey] = data;
+    await saveContractToDB(monthKey, data);
+    await saveFileMeta('contract', `${file.name} (${monthKey})`, data.length);
+    const latestMonth = Object.keys(contractByMonth).sort().pop();
+    contractData = contractByMonth[latestMonth];
     document.getElementById('uploadContract').classList.add('loaded');
-    document.getElementById('contractStatus').textContent = `${data.length.toLocaleString()}건 로드 완료`;
-    showStatus(`계약수 로드: ${data.length.toLocaleString()}건 (자동 저장됨)`, 'success');
+    document.getElementById('contractStatus').textContent = `${data.length.toLocaleString()}건 (${monthKey})`;
+    showStatus(`계약수 로드: ${data.length.toLocaleString()}건 → ${monthKey} (자동 저장됨)`, 'success');
+    fileJustUploaded = true;
     await tryBuildTab4();
   }, 'progressContract');
 });
@@ -1056,9 +1371,13 @@ function setQuickDate(type, btn) {
     case 'today':
       start = end = fmt(today);
       break;
-    case 'yesterday': {
-      const y = new Date(today); y.setDate(y.getDate() - 1);
-      start = end = fmt(y);
+    case 'lastBizDay': {
+      if (globalLatestDate) {
+        start = end = globalLatestDate;
+      } else {
+        const y = new Date(today); y.setDate(y.getDate() - 1);
+        start = end = fmt(y);
+      }
       break;
     }
     case 'thisMonth':
@@ -1078,9 +1397,11 @@ function setQuickDate(type, btn) {
 
   document.getElementById('dateStart').value = start;
   document.getElementById('dateEnd').value = end;
+  updateDateRangeText();
 
   document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  document.getElementById('calendarPopup').classList.remove('open');
 
   tryBuildTab4();
 }
@@ -1090,15 +1411,153 @@ function initDefaultDates() {
   const fmt = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
   document.getElementById('dateStart').value = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-01`;
   document.getElementById('dateEnd').value = fmt(today);
+  updateDateRangeText();
 }
 
-document.getElementById('dateStart').addEventListener('change', () => {
-  document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));
-  tryBuildTab4();
+// ── Custom Calendar ──
+let calViewYear, calViewMonth;
+let calSelectPhase = 'start';
+
+function toggleCalendar() {
+  const popup = document.getElementById('calendarPopup');
+  if (popup.classList.contains('open')) {
+    popup.classList.remove('open');
+    return;
+  }
+  const startVal = document.getElementById('dateStart').value;
+  if (startVal) {
+    const d = new Date(startVal);
+    calViewYear = d.getFullYear();
+    calViewMonth = d.getMonth();
+  } else {
+    const now = new Date();
+    calViewYear = now.getFullYear();
+    calViewMonth = now.getMonth();
+  }
+  calSelectPhase = 'start';
+  renderCalendar();
+  popup.classList.add('open');
+}
+
+function calNavMonth(delta) {
+  calViewMonth += delta;
+  if (calViewMonth < 0) { calViewMonth = 11; calViewYear--; }
+  if (calViewMonth > 11) { calViewMonth = 0; calViewYear++; }
+  renderCalendar();
+}
+
+function renderCalendar() {
+  document.getElementById('calTitle').textContent = `${calViewYear}년 ${calViewMonth + 1}월`;
+  const grid = document.getElementById('calendarGrid');
+  const startVal = document.getElementById('dateStart').value;
+  const endVal = document.getElementById('dateEnd').value;
+  const now = new Date();
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+
+  let html = '';
+  ['일','월','화','수','목','금','토'].forEach(d => { html += `<div class="day-header">${d}</div>`; });
+
+  function dayHtml(d, ds, isOther) {
+    let cls = 'day-cell';
+    if (isOther) cls += ' other-month';
+    if (ds === todayStr) cls += ' today';
+    if (ds === startVal) cls += ' selected-start';
+    if (ds === endVal) cls += ' selected-end';
+    if (startVal && endVal && ds > startVal && ds < endVal) cls += ' in-range';
+    return `<div class="${cls}" data-date="${ds}" onclick="calSelectDate('${ds}')">${d}</div>`;
+  }
+
+  const firstDay = new Date(calViewYear, calViewMonth, 1).getDay();
+  const daysInMonth = new Date(calViewYear, calViewMonth + 1, 0).getDate();
+  const prevDays = new Date(calViewYear, calViewMonth, 0).getDate();
+
+  for (let i = firstDay - 1; i >= 0; i--) {
+    const d = prevDays - i;
+    const m = calViewMonth === 0 ? 12 : calViewMonth;
+    const y = calViewMonth === 0 ? calViewYear - 1 : calViewYear;
+    html += dayHtml(d, `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`, true);
+  }
+  for (let d = 1; d <= daysInMonth; d++) {
+    html += dayHtml(d, `${calViewYear}-${String(calViewMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`, false);
+  }
+  const totalCells = firstDay + daysInMonth;
+  const remaining = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+  for (let d = 1; d <= remaining; d++) {
+    const m = calViewMonth === 11 ? 1 : calViewMonth + 2;
+    const y = calViewMonth === 11 ? calViewYear + 1 : calViewYear;
+    html += dayHtml(d, `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`, true);
+  }
+
+  grid.innerHTML = html;
+
+  const hint = document.getElementById('calHint');
+  if (calSelectPhase === 'start') {
+    hint.textContent = '시작일을 선택하세요';
+  } else {
+    hint.textContent = `시작일: ${startVal}  →  종료일을 선택하세요`;
+  }
+}
+
+// 호버 프리뷰: innerHTML 교체 없이 CSS 클래스만 변경 (클릭 이벤트 보호)
+document.getElementById('calendarGrid').addEventListener('mouseover', (e) => {
+  if (calSelectPhase !== 'end') return;
+  const cell = e.target.closest('.day-cell');
+  if (!cell || !cell.dataset.date) return;
+  const hoverDate = cell.dataset.date;
+  const startVal = document.getElementById('dateStart').value;
+  if (!startVal) return;
+  const rStart = hoverDate < startVal ? hoverDate : startVal;
+  const rEnd = hoverDate < startVal ? startVal : hoverDate;
+  document.querySelectorAll('#calendarGrid .day-cell').forEach(c => {
+    const d = c.dataset.date;
+    c.classList.remove('in-range', 'selected-end');
+    if (d && d > rStart && d < rEnd) c.classList.add('in-range');
+    if (d === hoverDate) c.classList.add('selected-end');
+  });
 });
-document.getElementById('dateEnd').addEventListener('change', () => {
-  document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));
-  tryBuildTab4();
+document.getElementById('calendarGrid').addEventListener('mouseleave', () => {
+  if (calSelectPhase !== 'end') return;
+  document.querySelectorAll('#calendarGrid .day-cell').forEach(c => {
+    c.classList.remove('in-range', 'selected-end');
+  });
+});
+
+function calSelectDate(dateStr) {
+  if (calSelectPhase === 'start') {
+    document.getElementById('dateStart').value = dateStr;
+    document.getElementById('dateEnd').value = '';
+    calSelectPhase = 'end';
+    renderCalendar();
+  } else {
+    const startVal = document.getElementById('dateStart').value;
+    if (dateStr < startVal) {
+      document.getElementById('dateStart').value = dateStr;
+      document.getElementById('dateEnd').value = startVal;
+    } else {
+      document.getElementById('dateEnd').value = dateStr;
+    }
+    calSelectPhase = 'start';
+    document.getElementById('calendarPopup').classList.remove('open');
+    updateDateRangeText();
+    document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));
+    tryBuildTab4();
+  }
+}
+
+function updateDateRangeText() {
+  const start = document.getElementById('dateStart').value;
+  const end = document.getElementById('dateEnd').value;
+  const el = document.getElementById('dateRangeText');
+  if (!start && !end) el.textContent = '전체 기간';
+  else if (start === end) el.textContent = start;
+  else el.textContent = `${start} ~ ${end}`;
+}
+
+document.addEventListener('mousedown', (e) => {
+  const popup = document.getElementById('calendarPopup');
+  if (popup.classList.contains('open') && !e.target.closest('.date-range-picker')) {
+    popup.classList.remove('open');
+  }
 });
 
 function toggleFilterPanel(btn) {
@@ -1138,9 +1597,9 @@ function populateFilters() {
     });
   }
 
-  const buildPanel = (panelId, items) => {
+  const buildPanel = (panelId, items, presorted) => {
     const panel = document.getElementById(panelId);
-    const sorted = [...items].sort();
+    const sorted = presorted ? [...items] : [...items].sort();
     let html = `<label class="select-all"><input type="checkbox" checked onchange="toggleSelectAll(this, '${panelId}')"> 전체선택</label>`;
     sorted.forEach(item => {
       html += `<label><input type="checkbox" checked value="${item}" onchange="onFilterChange('${panelId}')"> ${item}</label>`;
@@ -1148,9 +1607,19 @@ function populateFilters() {
     panel.innerHTML = html;
   };
 
-  buildPanel('filterPanelGroup', groups);
+  const groupOrder = ['W그룹', 'E그룹', 'N그룹', '제2외국어', '톡이즈'];
+  const sortedGroups = [...groups].sort((a, b) => {
+    const ia = groupOrder.indexOf(a), ib = groupOrder.indexOf(b);
+    return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+  });
+  buildPanel('filterPanelGroup', sortedGroups, true);
   buildPanel('filterPanelCenter', centers);
-  buildPanel('filterPanelTeam', teams);
+  const sortedTeams = [...teams].sort((a, b) => {
+    const na = parseInt(a.replace(/[^0-9]/g, '')) || 999;
+    const nb = parseInt(b.replace(/[^0-9]/g, '')) || 999;
+    return na - nb;
+  });
+  buildPanel('filterPanelTeam', sortedTeams, true);
   // 개인 필터: 검색 기능 포함
   const personPanel = document.getElementById('filterPanelPerson');
   const sortedPersons = [...persons].sort();
@@ -1243,6 +1712,7 @@ async function tryBuildTab4() {
 
   const acc = await loadAccumulated();
   const allDates = Object.keys(acc.dates).sort();
+  globalLatestDate = allDates.length > 0 ? allDates[allDates.length - 1] : null;
 
   if (allDates.length === 0) {
     document.getElementById('dashboardArea').classList.add('hidden');
@@ -1279,7 +1749,10 @@ async function tryBuildTab4() {
     return true;
   };
 
-  saveLastUpdateTime();
+  if (fileJustUploaded) {
+    saveLastUpdateTime();
+    fileJustUploaded = false;
+  }
 
   const contractByKey = new Map();
   contractData.forEach(row => {
@@ -1292,11 +1765,11 @@ async function tryBuildTab4() {
   function getStats(name) {
     if (!personStats.has(name)) {
       personStats.set(name, {
-        todayDb: 0, todayDailyContract: 0, todayActualContract: 0,
+        todayDb: 0, todayDbNonIN: 0, todayDailyContract: 0, todayActualContract: 0, todayContractNonIN: 0,
         cumDbNonIN: 0, cumCancelNonIN: 0, cumContractNonIN: 0,
         cumDbIN: 0, cumCancelIN: 0, cumContractIN: 0,
         cumContractAll: 0, cumDbAll: 0,
-        holDb: 0, holDailyContract: 0, holActualContract: 0,
+        holDb: 0, holDailyContract: 0, holActualContract: 0, todayHolContract: 0,
       });
     }
     return personStats.get(name);
@@ -1315,7 +1788,7 @@ async function tryBuildTab4() {
       s.cumDbIN += counts.inOnly;
       s.cumDbAll += counts.total;
       if (isHol) s.holDb += counts.total;
-      if (isLatest) s.todayDb = counts.total;
+      if (isLatest) { s.todayDb = counts.total; s.todayDbNonIN = counts.nonIN; }
     }
   }
 
@@ -1330,11 +1803,11 @@ async function tryBuildTab4() {
     const appDateStr = datePart(ctRow[CT_COL.applicationDate]);
 
     const meta = acc.keyMeta[custKey];
-    let isIN = false, is일계약 = false;
+    const categoryVal = String(ctRow[CT_COL.category] || '').trim();
+    const isIN = categoryVal === '';
+    let is일계약 = false;
 
     if (meta) {
-      isIN = meta.in === 1;
-      // DB파일 기준 el=1이더라도, 계약파일의 신청일이 분배일과 다르면 이전계약
       is일계약 = meta.el === 1 && (appDateStr === meta.d);
     } else {
       const dbDateStr = datePart(ctRow[CT_COL.dbDate]);
@@ -1369,15 +1842,17 @@ async function tryBuildTab4() {
       s.cumContractAll++;
 
       if (isHolContract) {
-        s.holActualContract++;
-        if (is일계약) s.holDailyContract++;
+        if (is일계약) s.holDailyContract++;  // 일계약수: IN 포함
+        if (!isIN) s.holActualContract++;     // 실계약수: IN 제외
         // 디버그 기록
         if (!lastBuildDebug[manager]) lastBuildDebug[manager] = { holDetails: [] };
-        lastBuildDebug[manager].holDetails.push({ custKey, distDate: distDateForHol, appDate: appDateStr, type: is일계약 ? '일계약' : '이전계약', cancelled: false });
+        lastBuildDebug[manager].holDetails.push({ custKey, distDate: distDateForHol, appDate: appDateStr, type: is일계약 ? '일계약' : '이전계약', cancelled: false, isIN });
       }
       if (appDateStr === latestDate) {
         s.todayActualContract++;
+        if (!isIN) s.todayContractNonIN++;
         if (is일계약) s.todayDailyContract++;
+        if (isHolContract && !isIN) s.todayHolContract++;
       }
     } else {
       if (isIN) s.cumCancelIN++;
@@ -1385,10 +1860,18 @@ async function tryBuildTab4() {
       // 취소 건도 휴일이면 디버그에 기록
       if (isHolContract) {
         if (!lastBuildDebug[manager]) lastBuildDebug[manager] = { holDetails: [] };
-        lastBuildDebug[manager].holDetails.push({ custKey, distDate: distDateForHol, appDate: appDateStr, type: is일계약 ? '일계약' : '이전계약', cancelled: true });
+        lastBuildDebug[manager].holDetails.push({ custKey, distDate: distDateForHol, appDate: appDateStr, type: is일계약 ? '일계약' : '이전계약', cancelled: true, isIN });
       }
     }
   });
+
+  // 휴일근무 디버그 로그
+  console.log('=== 휴일근무 디버그 ===');
+  for (const [name, debug] of Object.entries(lastBuildDebug)) {
+    if (debug.holDetails && debug.holDetails.length > 0) {
+      console.log(`${name}: 휴일계약 ${debug.holDetails.length}건`, debug.holDetails);
+    }
+  }
 
   // ── Group by activeRoster ──
   const mainGroups = ['W그룹', 'E그룹', 'N그룹', '제2외국어'];
@@ -1411,17 +1894,15 @@ async function tryBuildTab4() {
     }
   });
 
-  // ── KPI (기간 전체, 모든 탭 합산) ──
-  let kpiDbTotal = 0, kpiDailyContractTotal = 0, kpiActualContractTotal = 0;
-  const allGrouped = [groupedMain, groupedTalkis];
-  for (const gMap of allGrouped) {
+  // ── KPI 1행: 조회 기간 기준 (필터 적용) ──
+  function calcFilteredKpi(gMap) {
+    let db = 0, actual = 0;
     for (const [, persons] of gMap) {
-      for (const p of persons) {
-        kpiDbTotal += p.cumDbAll;
-        kpiActualContractTotal += p.cumContractAll;
-      }
+      for (const p of persons) { db += p.cumDbAll; actual += p.cumContractAll; }
     }
+    return { db, actual };
   }
+  let filtDailyMain = 0, filtDailyTalkis = 0;
   for (const [key, meta] of Object.entries(acc.keyMeta)) {
     if (meta.el !== 1) continue;
     if (!isPersonVisible(meta.p)) continue;
@@ -1432,14 +1913,60 @@ async function tryBuildTab4() {
       if (dateStart && appDate < dateStart) continue;
       if (dateEnd && appDate > dateEnd) continue;
     }
+    const rv = ctRow[CT_COL.returnDate];
+    if (rv != null && rv !== '' && String(rv).trim() !== '') continue;
+    const pi = activeRoster.get(meta.p);
+    if (pi && talkisGroups.includes(pi.group)) filtDailyTalkis++;
+    else filtDailyMain++;
+  }
+  const filtMain = calcFilteredKpi(groupedMain); filtMain.daily = filtDailyMain;
+  const filtTalkis = calcFilteredKpi(groupedTalkis); filtTalkis.daily = filtDailyTalkis;
+
+  // ── KPI 2행: 전영업일 데이터 (날짜 필터 무관) ──
+  const kpiPersonDb = new Map();
+  const globalDayData = globalLatestDate ? acc.dates[globalLatestDate] : null;
+  if (globalDayData) {
+    for (const [name, counts] of Object.entries(globalDayData.persons)) {
+      kpiPersonDb.set(name, counts.total);
+    }
+  }
+  const kpiPersonContract = new Map();
+  contractData.forEach(ctRow => {
+    const manager = String(ctRow[CT_COL.manager] || '').trim();
+    if (!manager) return;
+    const appDateStr = datePart(ctRow[CT_COL.applicationDate]);
+    if (appDateStr !== globalLatestDate) return;
     const returnDateVal = ctRow[CT_COL.returnDate];
     const isCancelled = returnDateVal != null && returnDateVal !== '' && String(returnDateVal).trim() !== '';
-    if (!isCancelled) kpiDailyContractTotal++;
+    if (isCancelled) return;
+    if (!kpiPersonContract.has(manager)) kpiPersonContract.set(manager, { daily: 0, actual: 0 });
+    const kc = kpiPersonContract.get(manager);
+    kc.actual++;
+    const custKey = String(ctRow[CT_COL.customerKey] || '').trim();
+    const meta = custKey ? acc.keyMeta[custKey] : null;
+    let is일계약 = false;
+    if (meta) {
+      is일계약 = meta.el === 1 && (appDateStr === meta.d);
+    } else {
+      const dbDateStr = datePart(ctRow[CT_COL.dbDate]);
+      is일계약 = (dbDateStr && appDateStr && dbDateStr === appDateStr);
+    }
+    if (is일계약) kc.daily++;
+  });
+  function calcGlobalKpi(gMap) {
+    let db = 0, daily = 0, actual = 0;
+    for (const [, persons] of gMap) {
+      for (const p of persons) {
+        db += kpiPersonDb.get(p.name) || 0;
+        const kc = kpiPersonContract.get(p.name) || { daily: 0, actual: 0 };
+        daily += kc.daily; actual += kc.actual;
+      }
+    }
+    return { db, daily, actual };
   }
-  document.getElementById('kpiDbCount').textContent = kpiDbTotal.toLocaleString();
-  document.getElementById('kpiDailyContract').textContent = kpiDailyContractTotal.toLocaleString();
-  document.getElementById('kpiActualContract').textContent = kpiActualContractTotal.toLocaleString();
-  document.getElementById('kpiContractRate').textContent = kpiDbTotal > 0 ? (kpiActualContractTotal / kpiDbTotal * 100).toFixed(1) + '%' : '-';
+  kpiByTab.main = { filtered: filtMain, global: calcGlobalKpi(groupedMain) };
+  kpiByTab.talkis = { filtered: filtTalkis, global: calcGlobalKpi(groupedTalkis) };
+  displayKpi(currentTab);
 
   // ── Render helper ──
   const groupColors = {
@@ -1449,37 +1976,44 @@ async function tryBuildTab4() {
 
   function renderGroups(groupedPersons) {
     let html = '';
-    html += `<div class="info-bar">`;
-    html += `<span><strong>기준일:</strong> ${todayDbDate || '(DB 미업로드)'}</span>`;
-    const displayStart = accDates.length > 0 ? accDates[0] : allDates[0];
-    const displayEnd = accDates.length > 0 ? accDates[accDates.length-1] : allDates[allDates.length-1];
-    html += `<span><strong>조회 기간:</strong> ${displayStart} ~ ${displayEnd} (${accDates.length}일)</span>`;
-    if (queryEndDate) {
-      const rosterMonth = queryEndDate.slice(0, 7);
-      html += `<span><strong>명단 기준:</strong> ${rosterMonth}</span>`;
-    }
-    html += `</div>`;
 
     for (const [groupName, persons] of groupedPersons) {
       if (persons.length === 0) continue;
 
-      // 현재 순위: IN제외 실계약률 기준
+      // 현재 순위: DB<100 최하단, 실계약률 desc → 실계약수 desc
+      const latestIsHol = latestDate ? isHoliday(latestDate) : false;
+      function pureValues(p) {
+        const db = Math.max(0, p.cumDbNonIN - p.holDb);
+        const ct = Math.max(0, p.cumContractNonIN - p.holActualContract);
+        return { db, ct, rate: db > 0 ? ct / db : 0 };
+      }
       persons.sort((a, b) => {
-        const ra = a.cumDbNonIN > 0 ? a.cumContractNonIN / a.cumDbNonIN : 0;
-        const rb = b.cumDbNonIN > 0 ? b.cumContractNonIN / b.cumDbNonIN : 0;
-        return rb - ra;
+        const pa = pureValues(a), pb = pureValues(b);
+        const bottomA = pa.db < 100 ? 1 : 0;
+        const bottomB = pb.db < 100 ? 1 : 0;
+        if (bottomA !== bottomB) return bottomA - bottomB;
+        if (pa.rate !== pb.rate) return pb.rate - pa.rate;
+        return pb.ct - pa.ct;
       });
 
       // 전일 대비 순위 계산: 당일 데이터 제외한 순위
       const prevRank = {};
+      function prevPureValues(p) {
+        const prevDbNonIN = p.cumDbNonIN - p.todayDbNonIN;
+        const prevHolDb = p.holDb - (latestIsHol ? p.todayDb : 0);
+        const db = Math.max(0, prevDbNonIN - Math.max(0, prevHolDb));
+        const prevCtNonIN = p.cumContractNonIN - p.todayContractNonIN;
+        const prevHolCt = p.holActualContract - p.todayHolContract;
+        const ct = Math.max(0, prevCtNonIN - Math.max(0, prevHolCt));
+        return { db, ct, rate: db > 0 ? ct / db : 0 };
+      }
       const prevSorted = [...persons].sort((a, b) => {
-        const prevDbA = a.cumDbNonIN - (a.todayDb > 0 ? Math.round(a.todayDb * (a.cumDbNonIN / (a.cumDbAll || 1))) : 0);
-        const prevCtA = a.cumContractNonIN - a.todayActualContract;
-        const prevDbB = b.cumDbNonIN - (b.todayDb > 0 ? Math.round(b.todayDb * (b.cumDbNonIN / (b.cumDbAll || 1))) : 0);
-        const prevCtB = b.cumContractNonIN - b.todayActualContract;
-        const ra = prevDbA > 0 ? Math.max(0, prevCtA) / prevDbA : 0;
-        const rb = prevDbB > 0 ? Math.max(0, prevCtB) / prevDbB : 0;
-        return rb - ra;
+        const pa = prevPureValues(a), pb = prevPureValues(b);
+        const bottomA = pa.db < 100 ? 1 : 0;
+        const bottomB = pb.db < 100 ? 1 : 0;
+        if (bottomA !== bottomB) return bottomA - bottomB;
+        if (pa.rate !== pb.rate) return pb.rate - pa.rate;
+        return pb.ct - pa.ct;
       });
       prevSorted.forEach((p, i) => { prevRank[p.name] = i + 1; });
 
@@ -1500,7 +2034,7 @@ async function tryBuildTab4() {
       html += `<table class="perf-table"><thead>`;
       html += `<tr class="section-header">`;
       html += `<th colspan="5"></th>`;
-      html += `<th colspan="4" style="background:#e3f2fd;">당일${latestDate ? ' ('+latestDate+')' : ''}</th>`;
+      html += `<th colspan="4" style="background:#e3f2fd;">${latestDate || '-'}</th>`;
       html += `<th colspan="3" style="background:#e8f5e9;">누적 IN제외</th>`;
       html += `<th colspan="3" style="background:#fff8e1;">누적 IN성과</th>`;
       html += `<th colspan="2" style="background:#fce4ec;">IN포함</th>`;
@@ -1522,14 +2056,14 @@ async function tryBuildTab4() {
       const totals = { todayDb:0, todayDailyContract:0, todayActualContract:0, cumDbNonIN:0, cumCancelNonIN:0, cumContractNonIN:0, cumDbIN:0, cumCancelIN:0, cumContractIN:0, cumContractAll:0, cumDbAll:0, holDb:0, holDailyContract:0, holActualContract:0 };
 
       persons.forEach((p, idx) => {
-        const pureDb = p.cumDbNonIN - (p.holDb > 0 ? Math.round(p.holDb * (p.cumDbNonIN / (p.cumDbAll || 1))) : 0);
-        const pureContract = p.cumContractNonIN - (p.holActualContract > 0 ? Math.round(p.holActualContract * (p.cumContractNonIN / (p.cumContractAll || 1))) : 0);
+        const pureDb = p.cumDbNonIN - p.holDb;
+        const pureContract = p.cumContractNonIN - p.holActualContract;
         const rank = idx + 1;
 
         html += `<tr>`;
-        html += `<td>${rank}</td><td class="left">${p.center}</td><td class="left">${p.team}</td><td class="name-cell" style="cursor:pointer;color:#1a73e8;" onclick="showPersonDetail('${p.name.replace(/'/g, "\\'")}')">${p.name}</td><td>${p.hireDate}</td>`;
+        html += `<td>${rank}</td><td class="left">${p.center}</td><td class="left">${p.team}</td><td class="name-cell">${p.name}</td><td>${p.hireDate}</td>`;
         html += `<td>${p.todayDb}</td><td>${p.todayDailyContract}</td><td>${p.todayActualContract}</td><td class="rate-cell">${fmtRate(p.todayActualContract, p.todayDb)}</td>`;
-        html += `<td>${p.cumDbNonIN}</td><td>${p.cumCancelNonIN}</td><td class="highlight">${p.cumContractNonIN}</td>`;
+        html += `<td>${p.cumDbNonIN}</td><td>${p.cumCancelNonIN}</td><td>${p.cumContractNonIN}</td>`;
         html += `<td>${p.cumDbIN}</td><td>${p.cumCancelIN}</td><td>${p.cumContractIN}</td>`;
         html += `<td>${p.cumContractAll}</td><td class="rate-cell">${fmtRate(p.cumContractAll, p.cumDbAll)}</td>`;
         html += `<td>${p.holDb}</td><td>${p.holDailyContract}</td><td>${p.holActualContract}</td><td class="rate-cell">${fmtRate(p.holActualContract, p.holDb)}</td>`;
@@ -1540,13 +2074,13 @@ async function tryBuildTab4() {
         for (const k of Object.keys(totals)) totals[k] += p[k] || 0;
       });
 
-      const tPureDb = totals.cumDbNonIN - (totals.holDb > 0 ? Math.round(totals.holDb * (totals.cumDbNonIN / (totals.cumDbAll || 1))) : 0);
-      const tPureContract = totals.cumContractNonIN - (totals.holActualContract > 0 ? Math.round(totals.holActualContract * (totals.cumContractNonIN / (totals.cumContractAll || 1))) : 0);
+      const tPureDb = totals.cumDbNonIN - totals.holDb;
+      const tPureContract = totals.cumContractNonIN - totals.holActualContract;
 
       html += `<tr class="total-row">`;
       html += `<td colspan="5" style="text-align:right;">합계</td>`;
       html += `<td>${totals.todayDb}</td><td>${totals.todayDailyContract}</td><td>${totals.todayActualContract}</td><td class="rate-cell">${fmtRate(totals.todayActualContract, totals.todayDb)}</td>`;
-      html += `<td>${totals.cumDbNonIN}</td><td>${totals.cumCancelNonIN}</td><td class="highlight">${totals.cumContractNonIN}</td>`;
+      html += `<td>${totals.cumDbNonIN}</td><td>${totals.cumCancelNonIN}</td><td>${totals.cumContractNonIN}</td>`;
       html += `<td>${totals.cumDbIN}</td><td>${totals.cumCancelIN}</td><td>${totals.cumContractIN}</td>`;
       html += `<td>${totals.cumContractAll}</td><td class="rate-cell">${fmtRate(totals.cumContractAll, totals.cumDbAll)}</td>`;
       html += `<td>${totals.holDb}</td><td>${totals.holDailyContract}</td><td>${totals.holActualContract}</td><td class="rate-cell">${fmtRate(totals.holActualContract, totals.holDb)}</td>`;
@@ -1566,32 +2100,6 @@ async function tryBuildTab4() {
 }
 
 // ══════════════════════════════════════════════
-// ── Person Detail (Debug) ──
-// ══════════════════════════════════════════════
-function showPersonDetail(name) {
-  const debug = lastBuildDebug[name];
-  let html = `<h3>${name} — 휴일근무 상세</h3>`;
-  if (!debug || debug.holDetails.length === 0) {
-    html += '<p style="color:#888;">휴일근무 계약 내역이 없습니다.</p>';
-  } else {
-    const details = debug.holDetails;
-    const active = details.filter(d => !d.cancelled);
-    const cancelled = details.filter(d => d.cancelled);
-    html += `<p style="font-size:13px;margin-bottom:8px;">휴일 계약: <strong>${active.length}건</strong> (일계약 ${active.filter(d=>d.type==='일계약').length} / 이전계약 ${active.filter(d=>d.type==='이전계약').length})`;
-    if (cancelled.length > 0) html += ` + 취소 ${cancelled.length}건`;
-    html += `</p>`;
-    html += '<table><thead><tr><th>고객키</th><th>분배일</th><th>오더일</th><th>유형</th><th>상태</th></tr></thead><tbody>';
-    details.forEach(d => {
-      const cls = d.cancelled ? ' class="cancelled"' : '';
-      html += `<tr${cls}><td style="font-size:10px;">${d.custKey}</td><td>${d.distDate}</td><td>${d.appDate}</td><td>${d.type}</td><td>${d.cancelled ? '취소' : '유효'}</td></tr>`;
-    });
-    html += '</tbody></table>';
-  }
-  document.getElementById('detailContent').innerHTML = html;
-  document.getElementById('detailOverlay').classList.add('active');
-}
-
-// ══════════════════════════════════════════════
 // ── Downloads ──
 // ══════════════════════════════════════════════
 function getActiveTabPanel() {
@@ -1604,25 +2112,83 @@ function getActiveTabName() {
   return btn ? btn.textContent.trim() : 'dashboard';
 }
 
-function downloadPng() {
+function downloadPng(type) {
   const panel = getActiveTabPanel();
   if (!panel || !panel.innerHTML) return;
+
+  if (type === 'talkis') {
+    const talkisPanel = document.getElementById('tabTalkis');
+    if (!talkisPanel || !talkisPanel.innerHTML) return;
+    html2canvas(talkisPanel, { scale: 2, backgroundColor: '#f0f2f5' }).then(canvas => {
+      const link = document.createElement('a');
+      link.download = `톡이즈_성과_${new Date().toISOString().slice(0,10)}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+    return;
+  }
+
+  const engGroups = ['W그룹', 'E그룹', 'N그룹'];
+  const langGroups = ['제2외국어'];
+  const targetGroups = type === 'lang' ? langGroups : engGroups;
+  const label = type === 'lang' ? '제2외국어' : '영어';
+
+  // 해당 그룹만 보이도록 임시 숨김 처리
+  const sections = panel.querySelectorAll('.group-section');
+  const hidden = [];
+  sections.forEach(sec => {
+    const header = sec.querySelector('.group-header');
+    if (!header) return;
+    const groupName = header.textContent.replace(/\d+명$/, '').trim();
+    if (!targetGroups.includes(groupName)) {
+      sec.style.display = 'none';
+      hidden.push(sec);
+    }
+  });
+
+  // info-bar도 포함
   html2canvas(panel, { scale: 2, backgroundColor: '#f0f2f5' }).then(canvas => {
     const link = document.createElement('a');
-    link.download = `${getActiveTabName()}_성과_${new Date().toISOString().slice(0,10)}.png`;
+    link.download = `${getActiveTabName()}_${label}_성과_${new Date().toISOString().slice(0,10)}.png`;
     link.href = canvas.toDataURL('image/png');
     link.click();
+    // 원복
+    hidden.forEach(sec => { sec.style.display = ''; });
+  }).catch(() => {
+    hidden.forEach(sec => { sec.style.display = ''; });
   });
 }
 
-function downloadHtml() {
+function downloadHtml(tab) {
+  // 다운로드할 탭을 활성 상태로 전환
+  const prevTab = currentTab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  const tabBtn = tab === 'main' ? 0 : 1;
+  document.querySelectorAll('.tab-btn')[tabBtn].classList.add('active');
+  document.getElementById(tab === 'main' ? 'tabMain' : 'tabTalkis').classList.add('active');
+  currentTab = tab;
+  displayKpi(tab);
+
+  const tabName = tab === 'main' ? '뇌새김' : '톡이즈';
   const html = document.documentElement.outerHTML;
   const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
   const link = document.createElement('a');
-  link.download = `WM_데일리성과_${new Date().toISOString().slice(0,10)}.html`;
+  link.download = `WM_${tabName}_데일리성과_${new Date().toISOString().slice(0,10)}.html`;
   link.href = URL.createObjectURL(blob);
   link.click();
   URL.revokeObjectURL(link.href);
+
+  // 원래 탭으로 복원
+  if (prevTab !== tab) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    const prevBtn = prevTab === 'main' ? 0 : 1;
+    document.querySelectorAll('.tab-btn')[prevBtn].classList.add('active');
+    document.getElementById(prevTab === 'main' ? 'tabMain' : 'tabTalkis').classList.add('active');
+    currentTab = prevTab;
+    displayKpi(prevTab);
+  }
 }
 
 function downloadExcel() {
