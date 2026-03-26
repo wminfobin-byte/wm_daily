@@ -2357,14 +2357,31 @@ async function sendEmail(type) {
       pngDataUrls.push(dataUrl);
     }
 
-    // EmailJS 발송 (첨부파일은 base64 content로)
-    const attachments = pngDataUrls.map((dataUrl, i) => ({
-      name: `WM_${config.label}_${config.pngLabels[i]}_${today}.png`,
-      data: dataUrl.split(',')[1],
-    }));
+    // 인라인 이미지 HTML 생성
+    let imagesHtml = '';
+    pngDataUrls.forEach((dataUrl, i) => {
+      imagesHtml += `<p style="margin:12px 0;"><strong>${config.pngLabels[i]}</strong></p>`;
+      imagesHtml += `<p><img src="${dataUrl}" style="max-width:100%;border:1px solid #ddd;border-radius:4px;" alt="${config.pngLabels[i]}"></p>`;
+    });
 
     const subject = `[업무공유] ${config.label} 개인별 누적 성과 현황_${yymmdd}`;
-    const message = `안녕하세요.\n세일즈마케팅실 정보빈입니다.\n\n${m}/${d}(${aaa}) ${config.label} 개인별 누적 성과 공유 드립니다.\n\n이상입니다.\n감사합니다.\n\n________________________________________________________________________\n정보빈  l  Bobeen Jung\n세일즈마케팅실 / 사원\ninfo_bin@weaversmind.com\nMobile. 010-7278-5096\n\n㈜위버스마인드\n152-741 서울시 구로구 디지털로30길 28 914호(구로동, 마리오타워)\nTel. 02-888-2252    Fax. 02-888-2253\n\n\n내 손안의 즐거운 지식, 자발적이고 즐거운 몰입 "위버스마인드"`;
+    const message = `<div style="font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:14px;line-height:1.8;color:#333;">
+<p>안녕하세요.<br>세일즈마케팅실 정보빈입니다.</p>
+<p>${m}/${d}(${aaa}) ${config.label} 개인별 누적 성과 공유 드립니다.</p>
+${imagesHtml}
+<p>이상입니다.<br>감사합니다.</p>
+<br>
+<p style="border-top:1px solid #999;padding-top:12px;margin-top:16px;font-size:13px;line-height:1.6;color:#555;">
+<strong>정보빈</strong>  l  Bobeen Jung<br>
+세일즈마케팅실 / 사원<br>
+<a href="mailto:info_bin@weaversmind.com">info_bin@weaversmind.com</a><br>
+Mobile. 010-7278-5096<br><br>
+㈜위버스마인드<br>
+152-741 서울시 구로구 디지털로30길 28 914호(구로동, 마리오타워)<br>
+Tel. 02-888-2252&nbsp;&nbsp;&nbsp;&nbsp;Fax. 02-888-2253<br><br>
+<em>내 손안의 즐거운 지식, 자발적이고 즐거운 몰입 "위버스마인드"</em>
+</p>
+</div>`;
 
     const templateParams = {
       subject,
@@ -2372,12 +2389,6 @@ async function sendEmail(type) {
       to_emails: config.to,
       cc_emails: config.cc,
     };
-
-    // 첨부파일 파라미터 추가 (EmailJS는 content 필드로 첨부)
-    attachments.forEach((att, i) => {
-      templateParams[`attachment${i + 1}`] = att.data;
-      templateParams[`attachment${i + 1}_name`] = att.name;
-    });
 
     await emailjs.send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, templateParams, EMAIL_PUBLIC_KEY);
 
