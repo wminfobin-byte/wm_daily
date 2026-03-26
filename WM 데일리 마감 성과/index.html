@@ -2288,42 +2288,63 @@ const EMAIL_CONFIG = {
   }
 };
 
-function capturePng(type) {
+function captureForEmail(type) {
   return new Promise((resolve, reject) => {
     const panel = document.getElementById('tabMain');
     const talkisPanel = document.getElementById('tabTalkis');
 
+    // 탭이 숨겨져 있으면 임시로 보이게
+    let wasHidden = false;
+    const targetPanel = type === 'talkis' ? talkisPanel : panel;
+    if (targetPanel && !targetPanel.classList.contains('active')) {
+      targetPanel.style.display = 'block';
+      targetPanel.style.position = 'absolute';
+      targetPanel.style.left = '-9999px';
+      wasHidden = true;
+    }
+
+    function restore() {
+      if (wasHidden && targetPanel) {
+        targetPanel.style.display = '';
+        targetPanel.style.position = '';
+        targetPanel.style.left = '';
+      }
+    }
+
     if (type === 'talkis') {
-      if (!talkisPanel || !talkisPanel.innerHTML) { reject('톡이즈 데이터 없음'); return; }
-      html2canvas(talkisPanel, { scale: 2, backgroundColor: '#f0f2f5' }).then(canvas => {
-        resolve(canvas.toDataURL('image/png'));
-      }).catch(reject);
+      if (!talkisPanel || !talkisPanel.innerHTML) { restore(); reject('톡이즈 데이터 없음'); return; }
+      html2canvas(talkisPanel, { scale: 1.5, backgroundColor: '#f0f2f5' }).then(canvas => {
+        restore();
+        resolve(canvas.toDataURL('image/jpeg', 0.7));
+      }).catch(err => { restore(); reject(err); });
       return;
     }
 
-    if (!panel || !panel.innerHTML) { reject('뇌새김 데이터 없음'); return; }
+    if (!panel || !panel.innerHTML) { restore(); reject('뇌새김 데이터 없음'); return; }
 
     const engGroups = ['W그룹', 'E그룹', 'N그룹'];
     const langGroups = ['제2외국어'];
     const targetGroups = type === 'lang' ? langGroups : engGroups;
 
     const sections = panel.querySelectorAll('.group-section');
-    const hidden = [];
+    const hiddenSections = [];
     sections.forEach(sec => {
       const header = sec.querySelector('.group-header');
       if (!header) return;
       const groupName = header.textContent.replace(/\d+명$/, '').trim();
       if (!targetGroups.includes(groupName)) {
         sec.style.display = 'none';
-        hidden.push(sec);
+        hiddenSections.push(sec);
       }
     });
 
-    html2canvas(panel, { scale: 2, backgroundColor: '#f0f2f5' }).then(canvas => {
-      hidden.forEach(sec => { sec.style.display = ''; });
-      resolve(canvas.toDataURL('image/png'));
+    html2canvas(panel, { scale: 1.5, backgroundColor: '#f0f2f5' }).then(canvas => {
+      hiddenSections.forEach(sec => { sec.style.display = ''; });
+      restore();
+      resolve(canvas.toDataURL('image/jpeg', 0.7));
     }).catch(err => {
-      hidden.forEach(sec => { sec.style.display = ''; });
+      hiddenSections.forEach(sec => { sec.style.display = ''; });
+      restore();
       reject(err);
     });
   });
@@ -2336,7 +2357,7 @@ async function sendEmail(type) {
   const btn = document.getElementById(type === 'main' ? 'btnEmailMain' : 'btnEmailTalkis');
   const origText = btn.textContent;
   btn.classList.add('sending');
-  btn.textContent = '📧 발송 중...';
+  btn.textContent = '📧 캡처 중...';
 
   try {
     const now = new Date();
@@ -2351,24 +2372,38 @@ async function sendEmail(type) {
     const today = now.toISOString().slice(0, 10);
 
     // PNG 캡처
+    btn.textContent = '📧 이미지 캡처 중...';
     const pngDataUrls = [];
     for (const pngType of config.pngTypes) {
-      const dataUrl = await capturePng(pngType);
+      const dataUrl = await captureForEmail(pngType);
       pngDataUrls.push(dataUrl);
     }
 
-    // 인라인 이미지 HTML 생성
-    let imagesHtml = '';
-    pngDataUrls.forEach((dataUrl, i) => {
-      imagesHtml += `<p style="margin:12px 0;"><strong>${config.pngLabels[i]}</strong></p>`;
-      imagesHtml += `<p><img src="${dataUrl}" style="max-width:100%;border:1px solid #ddd;border-radius:4px;" alt="${config.pngLabels[i]}"></p>`;
-    });
+    // 히든 폼 생성 (sendForm으로 파일 첨부)
+    btn.textContent = '📧 발송 중...';
+    const form = document.createElement('form');
+    form.style.display = 'none';
 
-    const subject = `[업무공유] ${config.label} 개인별 누적 성과 현황_${yymmdd}`;
-    const message = `<div style="font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:14px;line-height:1.8;color:#333;">
+    const addField = (name, value) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      input.value = value;
+      form.appendChild(input);
+    };
+
+    // 텍스트 필드 추가 (textarea for long content)
+    addField('subject', `[업무공유] ${config.label} 개인별 누적 성과 현황_${yymmdd}`);
+    addField('to_emails', config.to);
+    addField('cc_emails', config.cc);
+
+    const msgArea = document.createElement('textarea');
+    msgArea.name = 'message';
+    msgArea.style.display = 'none';
+    msgArea.value = `<div style="font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:14px;line-height:1.8;color:#333;">
 <p>안녕하세요.<br>세일즈마케팅실 정보빈입니다.</p>
 <p>${m}/${d}(${aaa}) ${config.label} 개인별 누적 성과 공유 드립니다.</p>
-${imagesHtml}
+<p style="color:#888;font-size:13px;">※ 첨부 이미지를 확인해 주세요.</p>
 <p>이상입니다.<br>감사합니다.</p>
 <br>
 <p style="border-top:1px solid #999;padding-top:12px;margin-top:16px;font-size:13px;line-height:1.6;color:#555;">
@@ -2382,15 +2417,25 @@ Tel. 02-888-2252&nbsp;&nbsp;&nbsp;&nbsp;Fax. 02-888-2253<br><br>
 <em>내 손안의 즐거운 지식, 자발적이고 즐거운 몰입 "위버스마인드"</em>
 </p>
 </div>`;
+    form.appendChild(msgArea);
 
-    const templateParams = {
-      subject,
-      message,
-      to_emails: config.to,
-      cc_emails: config.cc,
-    };
+    // 파일 첨부
+    for (let i = 0; i < pngDataUrls.length; i++) {
+      const blob = await (await fetch(pngDataUrls[i])).blob();
+      const fileName = `${config.label}_${config.pngLabels[i]}_${yymmdd}.jpg`;
+      const file = new File([blob], fileName, { type: 'image/jpeg' });
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.name = 'attachment';
+      const dt = new DataTransfer();
+      dt.items.add(file);
+      fileInput.files = dt.files;
+      form.appendChild(fileInput);
+    }
 
-    await emailjs.send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, templateParams, EMAIL_PUBLIC_KEY);
+    document.body.appendChild(form);
+    await emailjs.sendForm(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, form, EMAIL_PUBLIC_KEY);
+    document.body.removeChild(form);
 
     btn.textContent = '✅ 발송 완료!';
     btn.style.borderColor = '#34a853';
