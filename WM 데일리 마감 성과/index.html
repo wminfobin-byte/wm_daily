@@ -7,6 +7,7 @@
 <link rel="icon" id="favicon" type="image/png" href="logo.png">
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Segoe UI', 'Malgun Gothic', sans-serif; background: #f0f2f5; color: #333; }
@@ -201,9 +202,13 @@
   .detail-modal .close-btn:hover { color: #333; }
 
   /* Download buttons */
-  .tab-actions { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+  .tab-actions { display: flex; align-items: center; gap: 6px; margin-left: auto; flex-wrap: wrap; }
   .btn-download { padding: 6px 14px; border: 1px solid #ccc; border-radius: 6px; background: #fff; cursor: pointer; font-size: 12px; font-weight: 600; color: #555; transition: all 0.15s; display: flex; align-items: center; gap: 4px; }
   .btn-download:hover { border-color: #1a73e8; color: #1a73e8; background: #f0f4ff; }
+  .btn-email { padding: 6px 14px; border: 1px solid #e67700; border-radius: 6px; background: #fff8e1; cursor: pointer; font-size: 12px; font-weight: 700; color: #e67700; transition: all 0.15s; display: none; align-items: center; gap: 4px; }
+  .btn-email:hover { background: #e67700; color: #fff; }
+  .btn-email.sending { opacity: 0.6; pointer-events: none; }
+  .btn-email.visible { display: flex; }
 
   @media (max-width: 768px) {
     .header { flex-direction: column; gap: 12px; align-items: flex-start; }
@@ -383,6 +388,8 @@
         <button class="btn-download" onclick="downloadExcel()">📊 Excel 다운로드</button>
         <button class="btn-download" onclick="downloadHtml('main')">🌐 HTML(뇌새김)</button>
         <button class="btn-download" onclick="downloadHtml('talkis')">🌐 HTML(톡이즈)</button>
+        <button class="btn-email" id="btnEmailMain" onclick="sendEmail('main')">📧 뇌새김 메일 발송</button>
+        <button class="btn-email" id="btnEmailTalkis" onclick="sendEmail('talkis')">📧 톡이즈 메일 발송</button>
       </div>
     </div>
     <div class="tab-panel active" id="tabMain"></div>
@@ -528,6 +535,7 @@ function authLogin() {
   if (_creds.some(c => id === _d(c.a) && pw === _d(c.b))) {
     authPassed = true;
     document.getElementById('btnAdmin').textContent = '데이터 업로드';
+    document.querySelectorAll('.btn-email').forEach(b => b.classList.add('visible'));
     document.getElementById('authModal').classList.remove('active');
     document.getElementById('uploadModal').classList.add('active');
   } else {
@@ -2245,6 +2253,140 @@ function downloadExcel() {
   const ws = XLSX.utils.aoa_to_sheet(rows);
   XLSX.utils.book_append_sheet(wb, ws, getActiveTabName().slice(0, 31));
   XLSX.writeFile(wb, `${getActiveTabName()}_성과_${new Date().toISOString().slice(0,10)}.xlsx`);
+}
+
+// ══════════════════════════════════════════════
+// ── Email 발송 ──
+// ══════════════════════════════════════════════
+const EMAIL_SERVICE_ID = 'service_skdfv9i';
+const EMAIL_TEMPLATE_ID = 'template_0s9jzke';
+const EMAIL_PUBLIC_KEY = 'zIYS4zSWWZo-h6wlW';
+const SITE_URL = 'https://wminfobin-byte.github.io/wm_daily/WM%20%EB%8D%B0%EC%9D%BC%EB%A6%AC%20%EB%A7%88%EA%B0%90%20%EC%84%B1%EA%B3%BC/';
+
+const EMAIL_CONFIG = {
+  main: {
+    label: '뇌새김',
+    to: 'info_bin@weaversmind.com',
+    cc: 'syhyoun@weaversmind.com',
+    /* 실제 발송용 (테스트 후 아래 주석 해제):
+    to: 'wldus00215@wcomms.kr,ajtmaaksnfk@wcomms.kr,ktyssy85@weaversmind.com,pkm8124@weaversmind.com,shany011@weaversmind.com,sja42sja42@wcomms.kr,wls339@w-care.co.kr,gpfl495@wcomms.kr,gorgeousblue@weaversmind.com,ckmr0421@wcomms.kr,jung8310@wcomms.kr,blue3767@wcomms.kr',
+    cc: 'wisyoungjoo@weaversmind.com,kth@weaversmind.com,hanbiz@weaversmind.com,19eith@weaversmind.com,hnpark@weaversmind.com,syhyoun@weaversmind.com,info_bin@weaversmind.com,kthv613@wcomms.kr,123sangyun@wcomms.kr,stm1815@wcomms.kr,okck8@weaversmind.com,jwoo12345@weaversmind.com,mineeeee01@weaversmind.com',
+    */
+    pngTypes: ['eng', 'lang'],
+    pngLabels: ['영어(W·E·N그룹)', '제2외국어'],
+  },
+  talkis: {
+    label: '톡이즈',
+    to: 'info_bin@weaversmind.com',
+    cc: 'syhyoun@weaversmind.com',
+    /* 실제 발송용 (테스트 후 아래 주석 해제):
+    to: 'pmj9825@weaversmind.com,khs0722@wcomms.kr',
+    cc: 'wisyoungjoo@weaversmind.com,mh.park@weaversmind.com,19eith@weaversmind.com,hnpark@weaversmind.com,syhyoun@weaversmind.com,info_bin@weaversmind.com,kthv613@wcomms.kr,123sangyun@wcomms.kr,stm1815@wcomms.kr',
+    */
+    pngTypes: ['talkis'],
+    pngLabels: ['톡이즈'],
+  }
+};
+
+function capturePng(type) {
+  return new Promise((resolve, reject) => {
+    const panel = document.getElementById('tabMain');
+    const talkisPanel = document.getElementById('tabTalkis');
+
+    if (type === 'talkis') {
+      if (!talkisPanel || !talkisPanel.innerHTML) { reject('톡이즈 데이터 없음'); return; }
+      html2canvas(talkisPanel, { scale: 2, backgroundColor: '#f0f2f5' }).then(canvas => {
+        resolve(canvas.toDataURL('image/png'));
+      }).catch(reject);
+      return;
+    }
+
+    if (!panel || !panel.innerHTML) { reject('뇌새김 데이터 없음'); return; }
+
+    const engGroups = ['W그룹', 'E그룹', 'N그룹'];
+    const langGroups = ['제2외국어'];
+    const targetGroups = type === 'lang' ? langGroups : engGroups;
+
+    const sections = panel.querySelectorAll('.group-section');
+    const hidden = [];
+    sections.forEach(sec => {
+      const header = sec.querySelector('.group-header');
+      if (!header) return;
+      const groupName = header.textContent.replace(/\d+명$/, '').trim();
+      if (!targetGroups.includes(groupName)) {
+        sec.style.display = 'none';
+        hidden.push(sec);
+      }
+    });
+
+    html2canvas(panel, { scale: 2, backgroundColor: '#f0f2f5' }).then(canvas => {
+      hidden.forEach(sec => { sec.style.display = ''; });
+      resolve(canvas.toDataURL('image/png'));
+    }).catch(err => {
+      hidden.forEach(sec => { sec.style.display = ''; });
+      reject(err);
+    });
+  });
+}
+
+async function sendEmail(type) {
+  const config = EMAIL_CONFIG[type];
+  if (!config) return;
+
+  const btn = document.getElementById(type === 'main' ? 'btnEmailMain' : 'btnEmailTalkis');
+  const origText = btn.textContent;
+  btn.classList.add('sending');
+  btn.textContent = '📧 발송 중...';
+
+  try {
+    const today = new Date().toISOString().slice(0, 10);
+
+    // PNG 캡처
+    const pngDataUrls = [];
+    for (const pngType of config.pngTypes) {
+      const dataUrl = await capturePng(pngType);
+      pngDataUrls.push(dataUrl);
+    }
+
+    // EmailJS 발송 (첨부파일은 base64 content로)
+    const attachments = pngDataUrls.map((dataUrl, i) => ({
+      name: `WM_${config.label}_${config.pngLabels[i]}_${today}.png`,
+      data: dataUrl.split(',')[1],
+    }));
+
+    const templateParams = {
+      subject: `WM ${config.label} 데일리 마감 성과 (${today})`,
+      message: `${today} WM ${config.label} 데일리 마감 성과입니다.\n\n배포 사이트: ${SITE_URL}`,
+      to_emails: config.to,
+      cc_emails: config.cc,
+    };
+
+    // 첨부파일 파라미터 추가 (EmailJS는 content 필드로 첨부)
+    attachments.forEach((att, i) => {
+      templateParams[`attachment${i + 1}`] = att.data;
+      templateParams[`attachment${i + 1}_name`] = att.name;
+    });
+
+    await emailjs.send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, templateParams, EMAIL_PUBLIC_KEY);
+
+    btn.textContent = '✅ 발송 완료!';
+    btn.style.borderColor = '#34a853';
+    btn.style.color = '#34a853';
+    btn.style.background = '#e6f4ea';
+    showStatus(`${config.label} 메일이 발송되었습니다!`, 'success');
+
+    setTimeout(() => {
+      btn.textContent = origText;
+      btn.classList.remove('sending');
+      btn.style.borderColor = '';
+      btn.style.color = '';
+      btn.style.background = '';
+    }, 3000);
+  } catch (err) {
+    btn.textContent = origText;
+    btn.classList.remove('sending');
+    showStatus(`메일 발송 오류: ${err.text || err.message || err}`, 'error');
+  }
 }
 
 // ── Favicon: 로고를 정사각형으로 변환 ──
