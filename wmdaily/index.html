@@ -532,9 +532,16 @@ const _creds = [
   { a: [97,87,53,109,98,49,57,105,97,87,52,61], b: [100,50,112,107,99,87,104,120,98,72,77,53,77,105,69,61] },
   { a: [89,87,82,116,97,87,52,61], b: [100,50,86,104,100,109,86,121,99,122,65,121,78,84,103,104,73,81,61,61] }
 ];
-let authPassed = false;
+let authPassed = sessionStorage.getItem('authPassed') === 'true';
 
 function _d(arr) { return atob(arr.map(c => String.fromCharCode(c)).join('')); }
+
+function applyAuthUI() {
+  document.getElementById('btnAdmin').textContent = '데이터 업로드';
+  document.getElementById('btnSync').style.display = '';
+  restoreSyncTime();
+  startAutoSync();
+}
 
 function openModal() {
   if (authPassed) {
@@ -553,12 +560,10 @@ function authLogin() {
   const pw = document.getElementById('authPw').value;
   if (_creds.some(c => id === _d(c.a) && pw === _d(c.b))) {
     authPassed = true;
-    document.getElementById('btnAdmin').textContent = '데이터 업로드';
-    document.getElementById('btnSync').style.display = '';
-    restoreSyncTime();
+    sessionStorage.setItem('authPassed', 'true');
+    applyAuthUI();
     document.getElementById('authModal').classList.remove('active');
     document.getElementById('uploadModal').classList.add('active');
-    startAutoSync();
   } else {
     document.getElementById('authError').style.display = 'block';
   }
@@ -2504,6 +2509,7 @@ function setupFavicon() {
 // ── Init ──
 (async function init() {
   setupFavicon();
+  if (authPassed) applyAuthUI();
   refreshStorageDisplay().catch(() => {});
   updateLastUpdateTime();
   await loadSavedFiles().catch(() => {});
