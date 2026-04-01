@@ -461,6 +461,7 @@ let currentTab = 'main';      // 'main' (뇌새김) or 'talkis'
 let kpiByTab = { main: null, talkis: null }; // cached KPI per tab
 let globalLatestDate = null;  // 업로드된 날짜 중 가장 최근 (전영업일)
 let fileJustUploaded = false; // 파일 업로드 직후에만 true
+let lastUploadType = null;   // 'roster' | 'db' | 'contract' — 마지막 업로드 파일 유형
 let lastGroupedMain = null;   // buildDashboard 결과 캐시
 let lastGroupedTalkis = null;
 let lastLatestDate = null;
@@ -1514,6 +1515,7 @@ document.getElementById('fileRoster').addEventListener('change', e => {
     showStatus(`명단 로드: ${parsed.size}명 → ${monthKey} (자동 저장됨)`, 'success');
     populateFilters();
     fileJustUploaded = true;
+    lastUploadType = 'roster';
     await tryBuildTab4();
   }, 'progressRoster');
 });
@@ -1541,6 +1543,7 @@ document.getElementById('fileDb').addEventListener('change', e => {
       }
       if (processed === total) {
         fileJustUploaded = true;
+        lastUploadType = 'db';
         await tryBuildTab4();
       }
     }, total === 1 ? 'progressDb' : null);
@@ -1561,6 +1564,7 @@ document.getElementById('fileContract').addEventListener('change', e => {
     document.getElementById('contractStatus').textContent = `${data.length.toLocaleString()}건 (${monthKey})`;
     showStatus(`계약수 로드: ${data.length.toLocaleString()}건 → ${monthKey} (자동 저장됨)`, 'success');
     fileJustUploaded = true;
+    lastUploadType = 'contract';
     await tryBuildTab4();
   }, 'progressContract');
 });
@@ -2220,8 +2224,11 @@ async function tryBuildTab4() {
         return { db, ct, rate: db > 0 ? ct / db : 0 };
       }
       // 그룹 변동 구분: 하향자=최상단(-1), 일반=중간(0), 상향자=최하단(1)
+      // 명단만 올렸을 때만 위치 고정, DB/계약수 올린 후에는 순위대로 정렬
       const grpRank = { 'W그룹': 3, 'E그룹': 2, 'N그룹': 1 };
+      const pinGroupChange = lastUploadType === 'roster';
       function groupChangeOrder(p) {
+        if (!pinGroupChange) return 0; // DB/계약수 올린 후에는 위치 고정 안함
         if (p.prevGroup && p.prevGroup !== p.group && grpRank[p.group] && grpRank[p.prevGroup]) {
           if (grpRank[p.group] < grpRank[p.prevGroup]) return -1; // 하향 → 최상단
           if (grpRank[p.group] > grpRank[p.prevGroup]) return 1;  // 상향 → 최하단
@@ -2303,7 +2310,7 @@ async function tryBuildTab4() {
         const pureContract = p.cumContractNonIN - p.holActualContract;
         const rank = idx + 1;
 
-        // 전월 대비 그룹 변동 색상
+        // 전월 대비 그룹 변동 색상 (한달 내내 유지)
         let groupChgStyle = '';
         if (p.prevGroup && p.prevGroup !== p.group && grpRank[p.group] && grpRank[p.prevGroup]) {
           if (grpRank[p.group] < grpRank[p.prevGroup]) groupChgStyle = 'background:#DDD9C4;'; // 하향
