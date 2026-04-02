@@ -236,7 +236,7 @@
   <div class="header-right">
     <span class="last-update" id="lastUpdate"></span>
     <span id="syncTime" style="font-size:11px;opacity:0.7;display:none;"></span>
-    <button class="btn-upload-open" id="btnAccSave" style="display:none;" onclick="saveAccAll()">💾 누적저장</button>
+    <button class="btn-upload-open" id="btnAccSave" style="display:none;" onclick="saveAccAll()">🔄 동기화</button>
     <button class="btn-upload-open" id="btnAdmin" onclick="openModal()">관리자 로그인</button>
   </div>
 </div>
@@ -2463,7 +2463,7 @@ async function downloadExcel(tab) {
   const savedDates = getAccSavedDates(tab);
 
   if (savedDates.length === 0) {
-    alert(`${tabLabel} 누적 저장된 데이터가 없습니다.\n먼저 상단의 [💾 누적저장] 버튼을 클릭해주세요.`);
+    alert(`${tabLabel} 누적 저장된 데이터가 없습니다.\n먼저 상단의 [🔄 동기화] 버튼을 클릭해주세요.`);
     return;
   }
 
@@ -2778,7 +2778,7 @@ async function saveAccAll() {
 
   const btn = document.getElementById('btnAccSave');
   const origText = btn.textContent;
-  btn.textContent = '💾 저장 중...';
+  btn.textContent = '🔄 동기화 중...';
   btn.style.opacity = '0.6';
   btn.style.pointerEvents = 'none';
 
@@ -2806,11 +2806,11 @@ async function saveAccAll() {
   try {
     await syncToGitHub(true);
     btn.textContent = '✅ 완료!';
-    showStatus(`${saved.join(', ')} ${dateKey} 누적 저장 및 동기화 완료!`, 'success');
+    showStatus(`${saved.join(', ')} ${dateKey} 동기화 완료!`, 'success');
     setTimeout(() => { btn.textContent = origText; }, 3000);
   } catch (err) {
     btn.textContent = origText;
-    showStatus('누적 저장은 완료되었으나 동기화에 실패했습니다: ' + (err.message || err), 'warn');
+    showStatus('로컬 저장은 완료되었으나 동기화에 실패했습니다: ' + (err.message || err), 'warn');
   } finally {
     btn.style.opacity = '';
     btn.style.pointerEvents = '';
