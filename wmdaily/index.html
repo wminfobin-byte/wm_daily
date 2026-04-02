@@ -2810,7 +2810,7 @@ async function saveAccAll() {
     setTimeout(() => { btn.textContent = origText; }, 3000);
   } catch (err) {
     btn.textContent = origText;
-    showStatus('로컬 저장은 완료되었으나 동기화에 실패했습니다: ' + (err.message || err), 'warn');
+    showStatus('로컬 저장은 완료되었으나 동기화에 실패했습니다. [🔄 동기화] 버튼을 다시 눌러주세요.', 'warn');
   } finally {
     btn.style.opacity = '';
     btn.style.pointerEvents = '';
