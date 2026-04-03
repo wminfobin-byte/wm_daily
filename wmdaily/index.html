@@ -464,6 +464,12 @@
 // ══════════════════════════════════════════════
 let contractData = null;
 let contractByMonth = {};
+
+function mergeAllContracts() {
+  const allRows = [];
+  for (const rows of Object.values(contractByMonth)) allRows.push(...rows);
+  return allRows.length > 0 ? allRows : null;
+}
 let rosterMap = null;         // current active roster (latest month)
 let rosterByMonth = {};       // { 'YYYY-MM': Map(name → info) }
 let todayDbDate = null;
@@ -558,15 +564,18 @@ function fmtDateTime(date) {
   return `${y}-${mo}-${d} ${h}:${mi}`;
 }
 
-// 파일명에서 월 키 추출: "WM_근태보고_그룹_2603.xls" → "2026-03"
+// 파일명에서 월 키 추출: "신청자관리_2603" → "2026-03", "WM_근태보고_그룹_202603" → "2026-03"
 function extractMonthKey(filename) {
-  const m = filename.match(/(\d{4})[\-_.]?(\d{2})/);
-  if (m) {
-    const num = m[1] + m[2];
-    // 6자리 yyyymm vs 4자리 yymm
+  // 6자리 이상 먼저 시도 (yyyymm)
+  const m6 = filename.match(/(\d{4})[\-_.]?(\d{2})/);
+  if (m6) {
+    const num = m6[1] + m6[2];
     if (num.length >= 6) return `${num.slice(0,4)}-${num.slice(4,6)}`;
-    // 4자리: yymm → 20yy-mm
-    return `20${num.slice(0,2)}-${num.slice(2,4)}`;
+  }
+  // 4자리 yymm (신청자관리_2604 등)
+  const m4 = filename.match(/(\d{2})(\d{2})/);
+  if (m4) {
+    return `20${m4[1]}-${m4[2]}`;
   }
   // fallback: 현재 월
   const now = new Date();
@@ -965,7 +974,7 @@ async function refreshStorageDisplay() {
     } else {
       parts.push('DB X');
     }
-    parts.push(hasContract ? '계약 O' : '계약 X');
+    parts.push(contractKeys.length > 0 ? `계약 ${contractKeys.sort().join(', ')}` : '계약 X');
     el.textContent = parts.join(' | ');
   } catch {
     document.getElementById('storageDates').textContent = '(읽기 오류)';
@@ -1295,13 +1304,13 @@ async function deleteFileEntry(type, index) {
       await new Promise((resolve, reject) => { tx.oncomplete = resolve; tx.onerror = () => reject(tx.error); });
       // 메모리 업데이트
       if (monthKey) delete contractByMonth[monthKey];
-      const remaining = Object.keys(contractByMonth).sort();
-      contractData = remaining.length > 0 ? contractByMonth[remaining[remaining.length - 1]] : null;
-      if (files.length === 0) {
+      contractData = mergeAllContracts();
+      if (files.length === 0 || !contractData) {
         document.getElementById('uploadContract').classList.remove('loaded');
         document.getElementById('contractStatus').textContent = '';
       } else {
-        document.getElementById('contractStatus').textContent = `${contractData.length.toLocaleString()}건 (저장됨, ${Object.keys(contractByMonth).length}개월)`;
+        const months = Object.keys(contractByMonth).sort();
+        document.getElementById('contractStatus').textContent = `${contractData.length.toLocaleString()}건 (저장됨, ${months.join(', ')})`;
       }
     }
     db.close();
@@ -1435,10 +1444,10 @@ async function loadSavedFiles() {
       for (const [monthKey, rows] of contractEntries) {
         contractByMonth[monthKey] = rows;
       }
-      const latestMonth = Object.keys(contractByMonth).sort().pop();
-      contractData = contractByMonth[latestMonth];
+      contractData = mergeAllContracts();
       document.getElementById('uploadContract').classList.add('loaded');
-      document.getElementById('contractStatus').textContent = `${contractData.length.toLocaleString()}건 (저장됨, ${Object.keys(contractByMonth).length}개월)`;
+      const months = Object.keys(contractByMonth).sort();
+      document.getElementById('contractStatus').textContent = `${contractData.length.toLocaleString()}건 (저장됨, ${months.join(', ')})`;
     }
 
     if (rosterMap && contractData) {
@@ -1600,10 +1609,10 @@ document.getElementById('fileContract').addEventListener('change', e => {
     contractByMonth[monthKey] = data;
     await saveContractToDB(monthKey, data);
     await saveFileMeta('contract', `${file.name} (${monthKey})`, data.length);
-    const latestMonth = Object.keys(contractByMonth).sort().pop();
-    contractData = contractByMonth[latestMonth];
+    contractData = mergeAllContracts();
     document.getElementById('uploadContract').classList.add('loaded');
-    document.getElementById('contractStatus').textContent = `${data.length.toLocaleString()}건 (${monthKey})`;
+    const months = Object.keys(contractByMonth).sort();
+    document.getElementById('contractStatus').textContent = `${contractData.length.toLocaleString()}건 (${months.join(', ')})`;
     showStatus(`계약수 로드: ${data.length.toLocaleString()}건 → ${monthKey} (자동 저장됨)`, 'success');
     fileJustUploaded = true;
     lastUploadType = 'contract';
@@ -3114,11 +3123,11 @@ async function loadSharedData() {
       for (const [monthKey, rows] of Object.entries(shared.contract)) {
         contractByMonth[monthKey] = rows;
       }
-      const latestContractMonth = Object.keys(contractByMonth).sort().pop();
-      if (latestContractMonth) {
-        contractData = contractByMonth[latestContractMonth];
+      contractData = mergeAllContracts();
+      if (contractData) {
         document.getElementById('uploadContract').classList.add('loaded');
-        document.getElementById('contractStatus').textContent = `${contractData.length.toLocaleString()}건 (공유 데이터)`;
+        const months = Object.keys(contractByMonth).sort();
+        document.getElementById('contractStatus').textContent = `${contractData.length.toLocaleString()}건 (공유 데이터, ${months.join(', ')})`;
       }
     }
 
