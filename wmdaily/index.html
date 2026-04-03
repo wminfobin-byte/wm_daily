@@ -1614,6 +1614,7 @@ document.getElementById('fileContract').addEventListener('change', e => {
     const months = Object.keys(contractByMonth).sort();
     document.getElementById('contractStatus').textContent = `${contractData.length.toLocaleString()}건 (${months.join(', ')})`;
     showStatus(`계약수 로드: ${data.length.toLocaleString()}건 → ${monthKey} (자동 저장됨)`, 'success');
+    await refreshStorageDisplay();
     fileJustUploaded = true;
     lastUploadType = 'contract';
     await tryBuildTab4();
