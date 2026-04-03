@@ -1085,11 +1085,15 @@ async function saveRosterToDB(monthKey, rows) {
   }
 }
 
-async function saveContractToDB(monthKey, rows) {
+async function saveContractToDB() {
   try {
     const db = await openDB();
     const tx = db.transaction(STORE_CONTRACT, 'readwrite');
-    tx.objectStore(STORE_CONTRACT).put(rows, monthKey);
+    const store = tx.objectStore(STORE_CONTRACT);
+    store.clear();
+    for (const [mk, rows] of Object.entries(contractByMonth)) {
+      store.put(rows, mk);
+    }
     await new Promise((resolve, reject) => { tx.oncomplete = resolve; tx.onerror = () => reject(tx.error); });
     db.close();
   } catch (err) {
@@ -1607,7 +1611,7 @@ document.getElementById('fileContract').addEventListener('change', e => {
   const monthKey = extractMonthKey(file.name);
   readExcel(file, async data => {
     contractByMonth[monthKey] = data;
-    await saveContractToDB(monthKey, data);
+    await saveContractToDB();
     await saveFileMeta('contract', `${file.name} (${monthKey})`, data.length);
     contractData = mergeAllContracts();
     document.getElementById('uploadContract').classList.add('loaded');
@@ -3124,6 +3128,7 @@ async function loadSharedData() {
       for (const [monthKey, rows] of Object.entries(shared.contract)) {
         contractByMonth[monthKey] = rows;
       }
+      await saveContractToDB();
       contractData = mergeAllContracts();
       if (contractData) {
         document.getElementById('uploadContract').classList.add('loaded');
