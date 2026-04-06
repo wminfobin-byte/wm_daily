@@ -2397,7 +2397,7 @@ async function tryBuildTab4() {
     for (const [groupName, persons] of groupedPersons) {
       if (persons.length === 0) continue;
 
-      // 현재 순위: DB<100 최하단, 실계약률 desc → 실계약수 desc
+      // 현재 순위: 신규자 DB<100 최하단, 실계약률 desc → 실계약수 desc
       const latestIsHol = latestDate ? isHoliday(latestDate) : false;
       function pureValues(p) {
         const db = Math.max(0, p.cumDbNonIN - p.holDb);
@@ -2417,17 +2417,14 @@ async function tryBuildTab4() {
         }
         return 0; // 변동 없음 → 중간
       }
-      // 월초(1~5일)에는 DB 100 미만 하단 배치 비활성화
-      const isEarlyMonth = latestDate && parseInt(latestDate.slice(-2), 10) <= 5;
+      // 신규자(전월 명단에 없던 사람)만 DB 100 미만일 때 하단 배치
       persons.sort((a, b) => {
         const orderA = groupChangeOrder(a), orderB = groupChangeOrder(b);
         if (orderA !== orderB) return orderA - orderB;
         const pa = pureValues(a), pb = pureValues(b);
-        if (!isEarlyMonth) {
-          const bottomA = pa.db < 100 ? 1 : 0;
-          const bottomB = pb.db < 100 ? 1 : 0;
-          if (bottomA !== bottomB) return bottomA - bottomB;
-        }
+        const bottomA = (!a.prevGroup && pa.db < 100) ? 1 : 0;
+        const bottomB = (!b.prevGroup && pb.db < 100) ? 1 : 0;
+        if (bottomA !== bottomB) return bottomA - bottomB;
         if (pa.rate !== pb.rate) return pb.rate - pa.rate;
         return pb.ct - pa.ct;
       });
@@ -2445,11 +2442,9 @@ async function tryBuildTab4() {
       }
       const prevSorted = [...persons].sort((a, b) => {
         const pa = prevPureValues(a), pb = prevPureValues(b);
-        if (!isEarlyMonth) {
-          const bottomA = pa.db < 100 ? 1 : 0;
-          const bottomB = pb.db < 100 ? 1 : 0;
-          if (bottomA !== bottomB) return bottomA - bottomB;
-        }
+        const bottomA = (!a.prevGroup && pa.db < 100) ? 1 : 0;
+        const bottomB = (!b.prevGroup && pb.db < 100) ? 1 : 0;
+        if (bottomA !== bottomB) return bottomA - bottomB;
         if (pa.rate !== pb.rate) return pb.rate - pa.rate;
         return pb.ct - pa.ct;
       });
@@ -2880,13 +2875,10 @@ function buildAccSheet(groupedData, dateLabel) {
       const ct = Math.max(0, p.cumContractNonIN - p.holActualContract);
       return { db, ct, rate: db > 0 ? ct / db : 0 };
     }
-    const isEarlyMonth = lastLatestDate && parseInt(lastLatestDate.slice(-2), 10) <= 5;
     persons.sort((a, b) => {
       const pa = pureValues(a), pb = pureValues(b);
-      if (!isEarlyMonth) {
-        const bottomA = pa.db < 100 ? 1 : 0, bottomB = pb.db < 100 ? 1 : 0;
-        if (bottomA !== bottomB) return bottomA - bottomB;
-      }
+      const bottomA = (!a.prevGroup && pa.db < 100) ? 1 : 0, bottomB = (!b.prevGroup && pb.db < 100) ? 1 : 0;
+      if (bottomA !== bottomB) return bottomA - bottomB;
       if (pa.rate !== pb.rate) return pb.rate - pa.rate;
       return pb.ct - pa.ct;
     });
@@ -2900,10 +2892,8 @@ function buildAccSheet(groupedData, dateLabel) {
     }
     const prevSorted = [...persons].sort((a, b) => {
       const pa = prevPureValues(a), pb = prevPureValues(b);
-      if (!isEarlyMonth) {
-        const bottomA = pa.db < 100 ? 1 : 0, bottomB = pb.db < 100 ? 1 : 0;
-        if (bottomA !== bottomB) return bottomA - bottomB;
-      }
+      const bottomA = (!a.prevGroup && pa.db < 100) ? 1 : 0, bottomB = (!b.prevGroup && pb.db < 100) ? 1 : 0;
+      if (bottomA !== bottomB) return bottomA - bottomB;
       if (pa.rate !== pb.rate) return pb.rate - pa.rate;
       return pb.ct - pa.ct;
     });
