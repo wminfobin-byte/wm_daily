@@ -3531,7 +3531,7 @@ async function loadSharedData() {
 
     // ── 6단계: IndexedDB 백그라운드 저장 (90~100%) ──
     // 대시보드를 먼저 보여주고 DB 저장은 뒤에서 처리
-    setProgress(92, '데이터 저장 중 (백그라운드)...');
+    setProgress(92, '데이터 저장 중...');
     await new Promise(r => setTimeout(r, 0));
     try {
       await saveContractToDB();
