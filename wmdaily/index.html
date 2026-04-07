@@ -769,6 +769,7 @@ function applyAuthUI() {
 function openModal() {
   if (authPassed) {
     document.getElementById('uploadModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
     populateBottomPinList();
   } else {
     document.getElementById('authId').value = '';
@@ -788,6 +789,7 @@ function authLogin() {
     applyAuthUI();
     document.getElementById('authModal').classList.remove('active');
     document.getElementById('uploadModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
     populateBottomPinList();
   } else {
     document.getElementById('authError').style.display = 'block';
@@ -796,6 +798,7 @@ function authLogin() {
 
 function closeModal() {
   document.getElementById('uploadModal').classList.remove('active');
+  document.body.style.overflow = '';
 }
 document.getElementById('uploadModal').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeModal();
