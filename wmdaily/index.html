@@ -449,25 +449,29 @@
         <input type="file" accept=".xlsx,.xls" id="fileContract">
       </div>
     </div>
-    <div class="storage-row">
-      <span class="storage-label">저장 현황:</span>
-      <span class="storage-dates" id="storageDates">없음</span>
-      <button onclick="refreshStorageDisplay()">새로고침</button>
+    <div class="storage-row" style="justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;flex:1;min-width:0;">
+        <span class="storage-label">저장 현황:</span>
+        <span class="storage-dates" id="storageDates" style="font-size:12px;">없음</span>
+        <button onclick="refreshStorageDisplay()">새로고침</button>
+      </div>
       <button class="danger" onclick="clearStorage()">전체 초기화</button>
     </div>
-    <div class="storage-row" style="flex-direction:column;align-items:flex-start;gap:6px;">
+    <div class="storage-row" style="justify-content:space-between;">
       <div style="display:flex;align-items:center;gap:8px;">
-        <span class="storage-label">DB수 파일 아카이브:</span>
+        <span class="storage-label">DB수 아카이브:</span>
         <button onclick="toggleArchiveList()">목록 보기</button>
-        <button class="danger" onclick="clearArchive()">아카이브 삭제</button>
       </div>
-      <div id="archiveList" style="display:none;width:100%;max-height:200px;overflow-y:auto;font-size:12px;"></div>
+      <button class="danger" onclick="clearArchive()">아카이브 삭제</button>
     </div>
-    <div class="storage-row" style="flex-direction:column;align-items:flex-start;gap:6px;">
-      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-        <span class="storage-label">누적 엑셀 저장:</span>
+    <div id="archiveList" style="display:none;width:100%;max-height:200px;overflow-y:auto;font-size:12px;"></div>
+    <div class="storage-row" style="justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;flex:1;min-width:0;">
+        <span class="storage-label">누적 엑셀:</span>
         <span class="storage-dates" id="accDatesMain" style="font-size:12px;">-</span>
         <button onclick="refreshAccDisplay()">새로고침</button>
+      </div>
+      <div style="display:flex;gap:4px;">
         <button class="danger" onclick="clearAccStorage('main')">뇌새김 초기화</button>
         <button class="danger" onclick="clearAccStorage('talkis')">톡이즈 초기화</button>
       </div>
