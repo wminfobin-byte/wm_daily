@@ -1617,7 +1617,17 @@ async function deleteDbFileEntry(type, index) {
 }
 
 async function loadSavedFiles() {
+  const barFill = document.getElementById('loadingBarFill');
+  const pctEl = document.getElementById('loadingPct');
+  function setLocal(pct, msg) {
+    barFill.classList.remove('indeterminate');
+    barFill.style.width = pct + '%';
+    pctEl.textContent = msg;
+  }
+
   try {
+    setLocal(25, 'IndexedDB 읽는 중...');
+    await new Promise(r => setTimeout(r, 0));
     const db = await openDB();
     const tx = db.transaction([STORE_ROSTER, STORE_CONTRACT, STORE_FILEMETA], 'readonly');
 
@@ -1661,6 +1671,8 @@ async function loadSavedFiles() {
       renderFileList(type, fileMeta[type]);
     }
 
+    setLocal(50, '명단 데이터 처리 중...');
+    await new Promise(r => setTimeout(r, 0));
     if (rosterEntries.length > 0) {
       rosterByMonth = {};
       for (const [monthKey, rows] of rosterEntries) {
@@ -1673,6 +1685,9 @@ async function loadSavedFiles() {
       const totalNames = Object.values(rosterByMonth).reduce((s, m) => Math.max(s, m.size), 0);
       document.getElementById('rosterStatus').textContent = `${totalNames}명 (저장됨, ${Object.keys(rosterByMonth).length}개월)`;
     }
+
+    setLocal(70, '계약 데이터 처리 중...');
+    await new Promise(r => setTimeout(r, 0));
     if (contractEntries.length > 0) {
       contractByMonth = {};
       for (const [monthKey, rows] of contractEntries) {
@@ -1685,7 +1700,10 @@ async function loadSavedFiles() {
     }
 
     if (rosterMap && contractData) {
+      setLocal(85, '대시보드 생성 중...');
+      await new Promise(r => setTimeout(r, 0));
       await tryBuildTab4();
+      setLocal(100, '완료');
     }
   } catch (err) {
     console.error('저장 데이터 복원 오류:', err);
@@ -3641,27 +3659,64 @@ async function migrateV6vi25() {
 (async function init() {
   setupFavicon();
   if (authPassed) applyAuthUI();
+
+  // 로딩 UI 시작
+  const iconEl = document.getElementById('emptyStateIcon');
+  const barWrap = document.getElementById('loadingBarWrap');
+  const barFill = document.getElementById('loadingBarFill');
+  const pctEl = document.getElementById('loadingPct');
+  const msgEl = document.getElementById('emptyStateMsg');
+
+  function showLoading(pct, msg, label) {
+    iconEl.style.display = 'none';
+    barWrap.classList.add('active');
+    pctEl.classList.add('active');
+    barFill.classList.remove('indeterminate');
+    barFill.style.width = pct + '%';
+    pctEl.textContent = label;
+    msgEl.innerHTML = msg;
+  }
+  function showIndeterminate(msg, label) {
+    iconEl.style.display = 'none';
+    barWrap.classList.add('active');
+    pctEl.classList.add('active');
+    barFill.classList.add('indeterminate');
+    pctEl.textContent = label;
+    msgEl.innerHTML = msg;
+  }
+  function hideLoading() {
+    barWrap.classList.remove('active');
+    barFill.classList.remove('indeterminate');
+    pctEl.classList.remove('active');
+  }
+
+  showIndeterminate('데이터를 불러오는 중입니다…<br><small style="color:#888;">잠시만 기다려주세요.</small>', '초기화 중...');
+
   await migrateV6vi25();
   refreshStorageDisplay().catch(() => {});
   cleanupAccumulatedByMonth();
   refreshAccDisplay();
   updateLastUpdateTime();
+
+  // 로컬 데이터 로드
+  showLoading(20, '데이터를 불러오는 중입니다…<br><small style="color:#888;">잠시만 기다려주세요.</small>', '로컬 데이터 확인 중...');
+  await new Promise(r => setTimeout(r, 0));
   await loadSavedFiles().catch(() => {});
-  // If no local data loaded, try fetching shared data.json
-  if (!rosterMap || !contractData) {
-    document.getElementById('emptyStateIcon').style.display = 'none';
-    document.getElementById('loadingBarWrap').classList.add('active');
-    document.getElementById('loadingBarFill').classList.add('indeterminate');
-    document.getElementById('emptyStateMsg').innerHTML = '공유 데이터를 불러오는 중입니다…<br><small style="color:#888;">데이터 크기에 따라 시간이 걸릴 수 있습니다.</small>';
-    document.getElementById('loadingPct').classList.add('active');
-    document.getElementById('loadingPct').textContent = '서버 연결 중...';
+
+  if (rosterMap && contractData) {
+    // 로컬에서 로드 성공
+    showLoading(100, '데이터를 불러오는 중입니다…<br><small style="color:#888;">잠시만 기다려주세요.</small>', '완료');
+    hideLoading();
+  } else {
+    // 로컬 데이터 없음 → 공유 데이터 시도
+    showLoading(0, '공유 데이터를 불러오는 중입니다…<br><small style="color:#888;">데이터 크기에 따라 시간이 걸릴 수 있습니다.</small>', '서버 연결 중...');
     const loaded = await loadSharedData().catch(() => false);
-    document.getElementById('loadingBarWrap').classList.remove('active');
-    document.getElementById('loadingPct').classList.remove('active');
+    hideLoading();
     if (!loaded) {
-      document.getElementById('emptyStateIcon').style.display = '';
-      document.getElementById('emptyStateIcon').textContent = '📊';
-      document.getElementById('emptyStateMsg').innerHTML = '우측 상단 <strong>데이터 업로드</strong> 버튼을 눌러<br>명단, DB수, 계약수 파일을 업로드해주세요.';
+      // 공유 데이터도 없음 → 업로드 안내
+      iconEl.style.display = '';
+      iconEl.textContent = '📊';
+      msgEl.innerHTML = '우측 상단 <strong>데이터 업로드</strong> 버튼을 눌러<br>명단, DB수, 계약수 파일을 업로드해주세요.';
     }
   }
 })();
