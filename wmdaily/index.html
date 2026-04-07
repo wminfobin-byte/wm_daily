@@ -799,6 +799,9 @@ function closeModal() {
 document.getElementById('uploadModal').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeModal();
 });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('uploadModal').classList.contains('active')) closeModal();
+});
 document.getElementById('authModal').addEventListener('click', e => {
   if (e.target === e.currentTarget) e.target.classList.remove('active');
 });
