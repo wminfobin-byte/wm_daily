@@ -94,6 +94,24 @@
   .storage-row button.danger { color: #ea4335; border-color: #ea4335; }
   .storage-row button.danger:hover { background: #fde7e9; }
 
+  /* 최하단 배치 드롭다운 */
+  .bottom-pin-section { padding: 12px 0; border-top: 1px solid #eee; margin-top: 8px; }
+  .bottom-pin-section .section-title { font-size: 13px; font-weight: 600; color: #555; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .bottom-pin-section .section-title .pin-desc { font-weight: 400; font-size: 11px; color: #999; }
+  .bottom-pin-dropdown { position: relative; }
+  .bottom-pin-toggle { width: 100%; padding: 8px 12px; border: 1px solid #ccc; border-radius: 8px; background: #fff; cursor: pointer; font-size: 12px; text-align: left; display: flex; justify-content: space-between; align-items: center; }
+  .bottom-pin-toggle:hover { border-color: #1a73e8; }
+  .bottom-pin-toggle .pin-count { color: #1a73e8; font-weight: 600; }
+  .bottom-pin-panel { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: #fff; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); max-height: 250px; overflow-y: auto; z-index: 100; padding: 4px 0; }
+  .bottom-pin-panel.open { display: block; }
+  .bottom-pin-panel .pin-search { padding: 6px 10px; border-bottom: 1px solid #eee; }
+  .bottom-pin-panel .pin-search input { width: 100%; padding: 5px 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 12px; outline: none; }
+  .bottom-pin-panel .pin-search input:focus { border-color: #1a73e8; }
+  .bottom-pin-panel label { display: flex; align-items: center; gap: 6px; padding: 5px 12px; font-size: 12px; cursor: pointer; }
+  .bottom-pin-panel label:hover { background: #f5f7fa; }
+  .bottom-pin-panel label input[type="checkbox"] { accent-color: #ea4335; }
+  .bottom-pin-panel .pin-group-label { font-size: 11px; font-weight: 600; color: #888; padding: 6px 12px 2px; }
+
   /* Status bar inside modal */
   .modal .msg { padding: 10px 14px; border-radius: 8px; font-size: 12px; margin-top: 8px; }
   .msg-success { background: #e6f4ea; color: #1e7e34; }
@@ -157,6 +175,13 @@
 
   .empty-state { text-align: center; color: #888; padding: 80px 20px; background: #fff; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
   .empty-state p { margin-top: 8px; font-size: 14px; }
+  .loading-bar-wrap { width: 260px; height: 8px; background: #e8eaed; border-radius: 4px; margin: 0 auto 14px; overflow: hidden; display: none; }
+  .loading-bar-wrap.active { display: block; }
+  .loading-bar-fill { height: 100%; width: 0%; border-radius: 4px; background: linear-gradient(90deg, #4285f4, #1a73e8); transition: width 0.3s ease; }
+  .loading-bar-fill.indeterminate { width: 30% !important; animation: loadingSlide 1.5s ease-in-out infinite; }
+  @keyframes loadingSlide { 0% { margin-left: 0; } 50% { margin-left: 70%; } 100% { margin-left: 0; } }
+  .loading-pct { font-size: 12px; color: #5f6368; margin-top: 6px; font-variant-numeric: tabular-nums; display: none; }
+  .loading-pct.active { display: block; }
 
   .hidden { display: none !important; }
 
@@ -448,6 +473,19 @@
       </div>
       <div id="accDatesList" style="font-size:12px;color:#666;margin-top:4px;"></div>
     </div>
+    <div class="bottom-pin-section">
+      <div class="section-title">📌 최하단 고정 배치 <span class="pin-desc">선택된 인원은 성과와 무관하게 해당 그룹 최하단에 배치됩니다</span></div>
+      <div class="bottom-pin-dropdown">
+        <button type="button" class="bottom-pin-toggle" onclick="toggleBottomPinPanel()">
+          <span>인원 선택...</span>
+          <span class="pin-count" id="pinCountBadge">0명</span>
+        </button>
+        <div class="bottom-pin-panel" id="bottomPinPanel">
+          <div class="pin-search"><input type="text" placeholder="이름 검색..." oninput="filterBottomPinSearch(this.value)"></div>
+          <div id="bottomPinList"></div>
+        </div>
+      </div>
+    </div>
     <div id="statusBar"></div>
   </div>
 </div>
@@ -549,6 +587,8 @@
   </div>
   <div class="empty-state" id="emptyState">
     <div style="font-size:48px; margin-bottom:12px;" id="emptyStateIcon">📊</div>
+    <div class="loading-bar-wrap" id="loadingBarWrap"><div class="loading-bar-fill" id="loadingBarFill"></div></div>
+    <div class="loading-pct" id="loadingPct"></div>
     <p id="emptyStateMsg">우측 상단 <strong>데이터 업로드</strong> 버튼을 눌러<br>명단, DB수, 계약수 파일을 업로드해주세요.</p>
   </div>
   <div id="dashboardArea" class="hidden">
@@ -599,6 +639,7 @@ let fileJustUploaded = false; // 파일 업로드 직후에만 true
 let lastUploadType = null;   // 'roster' | 'db' | 'contract' — 마지막 업로드 파일 유형
 let rosterFirstUpload = false; // 해당 명단 파일이 처음 업로드된 건지 여부
 let uploadedRosterNames = new Set(); // 이미 업로드된 명단 파일명 추적
+let bottomPinNames = new Set(JSON.parse(localStorage.getItem('bottomPinNames') || '[]')); // 최하단 고정 배치 인원
 let lastGroupedMain = null;   // buildDashboard 결과 캐시
 let lastGroupedTalkis = null;
 let lastLatestDate = null;
@@ -724,6 +765,7 @@ function applyAuthUI() {
 function openModal() {
   if (authPassed) {
     document.getElementById('uploadModal').classList.add('active');
+    populateBottomPinList();
   } else {
     document.getElementById('authId').value = '';
     document.getElementById('authPw').value = '';
@@ -742,6 +784,7 @@ function authLogin() {
     applyAuthUI();
     document.getElementById('authModal').classList.remove('active');
     document.getElementById('uploadModal').classList.add('active');
+    populateBottomPinList();
   } else {
     document.getElementById('authError').style.display = 'block';
   }
@@ -759,6 +802,68 @@ document.getElementById('authModal').addEventListener('click', e => {
 document.getElementById('tokenModal').addEventListener('click', e => {
   if (e.target === e.currentTarget) e.target.classList.remove('active');
 });
+
+// ══════════════════════════════════════════════
+// ── 최하단 고정 배치 ──
+// ══════════════════════════════════════════════
+function toggleBottomPinPanel() {
+  document.getElementById('bottomPinPanel').classList.toggle('open');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.bottom-pin-dropdown')) {
+    document.getElementById('bottomPinPanel').classList.remove('open');
+  }
+});
+function filterBottomPinSearch(query) {
+  const labels = document.querySelectorAll('#bottomPinList label');
+  const q = query.trim().toLowerCase();
+  labels.forEach(label => {
+    const name = label.getAttribute('data-name') || '';
+    label.style.display = (!q || name.toLowerCase().includes(q)) ? '' : 'none';
+  });
+}
+function populateBottomPinList() {
+  const container = document.getElementById('bottomPinList');
+  if (!rosterMap || rosterMap.size === 0) {
+    container.innerHTML = '<div style="padding:8px 12px;font-size:12px;color:#999;">명단 파일을 먼저 업로드해주세요</div>';
+    return;
+  }
+  // 그룹별로 정리
+  const groupOrder = ['W그룹', 'E그룹', 'N그룹', '제2외국어', '톡이즈'];
+  const byGroup = {};
+  rosterMap.forEach((info, name) => {
+    const g = info.group || '기타';
+    if (!byGroup[g]) byGroup[g] = [];
+    byGroup[g].push(name);
+  });
+  let html = '';
+  const sortedGroups = Object.keys(byGroup).sort((a, b) => {
+    const ia = groupOrder.indexOf(a), ib = groupOrder.indexOf(b);
+    return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+  });
+  for (const g of sortedGroups) {
+    html += `<div class="pin-group-label">${g}</div>`;
+    byGroup[g].sort().forEach(name => {
+      const checked = bottomPinNames.has(name) ? 'checked' : '';
+      html += `<label data-name="${name}"><input type="checkbox" value="${name}" ${checked} onchange="onBottomPinChange()"> ${name}</label>`;
+    });
+  }
+  container.innerHTML = html;
+  updatePinCountBadge();
+}
+function onBottomPinChange() {
+  bottomPinNames.clear();
+  document.querySelectorAll('#bottomPinList input[type="checkbox"]:checked').forEach(cb => {
+    bottomPinNames.add(cb.value);
+  });
+  localStorage.setItem('bottomPinNames', JSON.stringify([...bottomPinNames]));
+  updatePinCountBadge();
+  tryBuildTab4();
+}
+function updatePinCountBadge() {
+  const badge = document.getElementById('pinCountBadge');
+  badge.textContent = bottomPinNames.size > 0 ? `${bottomPinNames.size}명 선택` : '0명';
+}
 
 // ══════════════════════════════════════════════
 // ── Tab Switch ──
@@ -2302,6 +2407,11 @@ async function tryBuildTab4() {
     const g = info.group;
     const prevInfo = prevMonthRoster ? prevMonthRoster.get(name) : null;
     const prevGroup = prevInfo ? prevInfo.group : null;
+    // 신규 입사자(이전 명단에 없던 인원): IN+휴일 제외 계약수 1건 이상이어야 리스트업
+    if (!prevGroup && prevMonthRoster) {
+      const pureContract = stats.cumContractNonIN - stats.holActualContract;
+      if (pureContract < 1) return;
+    }
     if (talkisGroups.includes(g)) {
       if (!groupedTalkis.has(g)) groupedTalkis.set(g, []);
       groupedTalkis.get(g).push({ name, ...info, ...stats, prevGroup });
@@ -2417,13 +2527,17 @@ async function tryBuildTab4() {
         }
         return 0; // 변동 없음 → 중간
       }
-      // 신규자(전월 명단에 없던 사람)만 DB 100 미만일 때 하단 배치
+      // 신규자(전월 명단에 없던 사람) DB 100 미만 또는 수동 최하단 고정 → 하단 배치
+      function isBottomPinned(p, pv) {
+        if (bottomPinNames.has(p.name)) return 1; // 수동 고정
+        if (!p.prevGroup && pv.db < 100) return 1; // 신규자 DB<100
+        return 0;
+      }
       persons.sort((a, b) => {
         const orderA = groupChangeOrder(a), orderB = groupChangeOrder(b);
         if (orderA !== orderB) return orderA - orderB;
         const pa = pureValues(a), pb = pureValues(b);
-        const bottomA = (!a.prevGroup && pa.db < 100) ? 1 : 0;
-        const bottomB = (!b.prevGroup && pb.db < 100) ? 1 : 0;
+        const bottomA = isBottomPinned(a, pa), bottomB = isBottomPinned(b, pb);
         if (bottomA !== bottomB) return bottomA - bottomB;
         if (pa.rate !== pb.rate) return pb.rate - pa.rate;
         return pb.ct - pa.ct;
@@ -2442,8 +2556,7 @@ async function tryBuildTab4() {
       }
       const prevSorted = [...persons].sort((a, b) => {
         const pa = prevPureValues(a), pb = prevPureValues(b);
-        const bottomA = (!a.prevGroup && pa.db < 100) ? 1 : 0;
-        const bottomB = (!b.prevGroup && pb.db < 100) ? 1 : 0;
+        const bottomA = isBottomPinned(a, pa), bottomB = isBottomPinned(b, pb);
         if (bottomA !== bottomB) return bottomA - bottomB;
         if (pa.rate !== pb.rate) return pb.rate - pa.rate;
         return pb.ct - pa.ct;
@@ -2566,11 +2679,16 @@ function downloadPng(type) {
   if (type === 'talkis') {
     const talkisPanel = document.getElementById('tabTalkis');
     if (!talkisPanel || !talkisPanel.innerHTML) return;
-    html2canvas(talkisPanel, { scale: 2, backgroundColor: '#f0f2f5' }).then(canvas => {
-      const link = document.createElement('a');
-      link.download = `톡이즈_성과_${new Date().toISOString().slice(0,10)}.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
+    const wasHidden = !talkisPanel.classList.contains('active');
+    if (wasHidden) talkisPanel.classList.add('active');
+    requestAnimationFrame(() => {
+      html2canvas(talkisPanel, { scale: 2, backgroundColor: '#f0f2f5' }).then(canvas => {
+        if (wasHidden) talkisPanel.classList.remove('active');
+        const link = document.createElement('a');
+        link.download = `톡이즈_성과_${new Date().toISOString().slice(0,10)}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      }).catch(() => { if (wasHidden) talkisPanel.classList.remove('active'); });
     });
     return;
   }
@@ -2618,13 +2736,20 @@ async function downloadAll() {
       if (type === 'talkis') {
         const talkisPanel = document.getElementById('tabTalkis');
         if (!talkisPanel || !talkisPanel.innerHTML) { resolve(); return; }
-        html2canvas(talkisPanel, { scale: 2, backgroundColor: '#f0f2f5' }).then(canvas => {
-          const link = document.createElement('a');
-          link.download = `톡이즈_성과_${new Date().toISOString().slice(0,10)}.png`;
-          link.href = canvas.toDataURL('image/png');
-          link.click();
-          resolve();
-        }).catch(resolve);
+        // 톡이즈 탭을 일시적으로 활성화하여 렌더링 후 캡처
+        const wasHidden = !talkisPanel.classList.contains('active');
+        if (wasHidden) talkisPanel.classList.add('active');
+        // 렌더링 대기 후 캡처
+        requestAnimationFrame(() => {
+          html2canvas(talkisPanel, { scale: 2, backgroundColor: '#f0f2f5' }).then(canvas => {
+            if (wasHidden) talkisPanel.classList.remove('active');
+            const link = document.createElement('a');
+            link.download = `톡이즈_성과_${new Date().toISOString().slice(0,10)}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            resolve();
+          }).catch(() => { if (wasHidden) talkisPanel.classList.remove('active'); resolve(); });
+        });
         return;
       }
       const panel = getActiveTabPanel();
@@ -3293,14 +3418,55 @@ function restoreSyncTime() {
 
 
 async function loadSharedData() {
+  // 로딩 진행률 업데이트 헬퍼
+  const barFill = document.getElementById('loadingBarFill');
+  const pctEl = document.getElementById('loadingPct');
+  function setProgress(pct, msg) {
+    barFill.classList.remove('indeterminate');
+    barFill.style.width = pct + '%';
+    pctEl.textContent = msg;
+  }
+
   try {
-    // raw.githubusercontent.com에서 즉시 로드 (GitHub Pages 배포 대기 불필요)
+    // ── 1단계: 다운로드 (0~50%) ──
+    setProgress(0, '서버 연결 중...');
     const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${GH_FILE}?t=${Date.now()}`);
     if (!res.ok) return false;
-    const shared = await res.json();
+
+    const contentLength = +res.headers.get('Content-Length');
+    let jsonText;
+    if (contentLength && res.body) {
+      const reader = res.body.getReader();
+      const chunks = [];
+      let received = 0;
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        chunks.push(value);
+        received += value.length;
+        const dlPct = Math.min(received / contentLength, 1);
+        setProgress(Math.round(dlPct * 50), `다운로드 ${(received / 1024 / 1024).toFixed(1)}MB / ${(contentLength / 1024 / 1024).toFixed(1)}MB`);
+      }
+      const allChunks = new Uint8Array(received);
+      let pos = 0;
+      for (const chunk of chunks) { allChunks.set(chunk, pos); pos += chunk.length; }
+      jsonText = new TextDecoder().decode(allChunks);
+    } else {
+      barFill.classList.add('indeterminate');
+      pctEl.textContent = '다운로드 중...';
+      jsonText = await res.text();
+    }
+
+    // ── 2단계: JSON 파싱 (50~60%) ──
+    setProgress(50, 'JSON 파싱 중...');
+    await new Promise(r => setTimeout(r, 0)); // UI 갱신 허용
+    const shared = JSON.parse(jsonText);
+    jsonText = null; // 메모리 해제
     if (!shared.dates || !shared.roster) return false;
 
-    // Restore roster
+    // ── 3단계: 명단 복원 (60~70%) ──
+    setProgress(60, '명단 데이터 처리 중...');
+    await new Promise(r => setTimeout(r, 0));
     rosterByMonth = {};
     for (const [monthKey, rows] of Object.entries(shared.roster)) {
       rosterByMonth[monthKey] = parseRosterRows(rows);
@@ -3313,7 +3479,9 @@ async function loadSharedData() {
       document.getElementById('rosterStatus').textContent = `${totalNames}명 (공유 데이터)`;
     }
 
-    // Restore contract
+    // ── 4단계: 계약 복원 (70~80%) ──
+    setProgress(70, '계약 데이터 처리 중...');
+    await new Promise(r => setTimeout(r, 0));
     if (shared.contract) {
       contractByMonth = {};
       for (const [monthKey, rows] of Object.entries(shared.contract)) {
@@ -3328,7 +3496,9 @@ async function loadSharedData() {
       }
     }
 
-    // Store dates/keyMeta into IndexedDB so loadAccumulated works
+    // ── 5단계: IndexedDB 저장 (80~90%) ──
+    setProgress(80, 'DB 저장 중...');
+    await new Promise(r => setTimeout(r, 0));
     const db = await openDB();
     const tx = db.transaction([STORE_DATES, STORE_KEYS], 'readwrite');
     const dateStore = tx.objectStore(STORE_DATES);
@@ -3346,9 +3516,13 @@ async function loadSharedData() {
       refreshAccDisplay();
     }
 
+    // ── 6단계: 대시보드 빌드 (90~100%) ──
+    setProgress(90, '대시보드 생성 중...');
+    await new Promise(r => setTimeout(r, 0));
     if (rosterMap && contractData) {
       await tryBuildTab4();
     }
+    setProgress(100, '완료');
 
     const exportDate = shared.exportedAt ? new Date(shared.exportedAt).toLocaleString('ko-KR') : '';
     if (exportDate) {
@@ -3475,10 +3649,17 @@ async function migrateV6vi25() {
   await loadSavedFiles().catch(() => {});
   // If no local data loaded, try fetching shared data.json
   if (!rosterMap || !contractData) {
-    document.getElementById('emptyStateIcon').textContent = '⏳';
+    document.getElementById('emptyStateIcon').style.display = 'none';
+    document.getElementById('loadingBarWrap').classList.add('active');
+    document.getElementById('loadingBarFill').classList.add('indeterminate');
     document.getElementById('emptyStateMsg').innerHTML = '공유 데이터를 불러오는 중입니다…<br><small style="color:#888;">데이터 크기에 따라 시간이 걸릴 수 있습니다.</small>';
+    document.getElementById('loadingPct').classList.add('active');
+    document.getElementById('loadingPct').textContent = '서버 연결 중...';
     const loaded = await loadSharedData().catch(() => false);
+    document.getElementById('loadingBarWrap').classList.remove('active');
+    document.getElementById('loadingPct').classList.remove('active');
     if (!loaded) {
+      document.getElementById('emptyStateIcon').style.display = '';
       document.getElementById('emptyStateIcon').textContent = '📊';
       document.getElementById('emptyStateMsg').innerHTML = '우측 상단 <strong>데이터 업로드</strong> 버튼을 눌러<br>명단, DB수, 계약수 파일을 업로드해주세요.';
     }
