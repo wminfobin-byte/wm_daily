@@ -1,0 +1,2921 @@
+<html><head><meta http-equiv='Content-Type' content='text/html; charset=utf-8'></head><body><div id="obSum"></div>
+
+<div>
+<table id="aqGray" style="margin-top:3px">
+	<tbody><tr>
+		<th>날짜</th>
+		<th>상담원</th>
+		<th>1차DB</th>
+		<th>불량</th>
+		<th>불량율</th>
+		<th>부재</th>
+		<th>부재율</th>
+		<th>통화예약</th>
+		<th>통화예약율</th>
+		<th>미오더드랍</th>
+		<th>미오더드랍율</th>
+		<th>OB시도</th>
+		<th>OB통화시간</th>
+		<th>통화</th>
+		<th>실계약</th>
+		<th>DB일계약</th>
+		<th>DB일계약율</th>
+		<th>실계약율</th>
+		<th>미통화</th>
+		<th>통화대비계약율</th>
+		<th>상담구매확정</th>
+		<th>자동구매확정</th>
+		<th>구매확정</th>
+		<th>구매확정율</th>
+	
+
+		<th>결제금액</th>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'" class="out">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_당산)김선숙</td>
+		<td>40</td>
+		<td>5</td>
+		<td>12.5%</td>
+		<td>14</td>
+		<td>35.0%</td>
+		<td>4</td>
+		<td>10.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>364</td>
+		<td style="background: #EAEAEA">3</td>
+		<td>1</td>
+		<td>2.5%</td>
+		<td style="background: #EAEAEA">7.5%</td>
+		<td>0</td>
+		<td>7.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>6,951,300</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'" class="out">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_당산)김애순</td>
+		<td>40</td>
+		<td>8</td>
+		<td>20.0%</td>
+		<td>16</td>
+		<td>40.0%</td>
+		<td>3</td>
+		<td>7.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>425</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>1</td>
+		<td>2.5%</td>
+		<td style="background: #EAEAEA">2.5%</td>
+		<td>0</td>
+		<td>2.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>2,317,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'" class="out">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_당산)김은주</td>
+		<td>38</td>
+		<td>10</td>
+		<td>26.3%</td>
+		<td>8</td>
+		<td>21.1%</td>
+		<td>10</td>
+		<td>26.3%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>516</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">5.3%</td>
+		<td>0</td>
+		<td>5.3%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>2,317,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_당산)김현진</td>
+		<td>40</td>
+		<td>19</td>
+		<td>47.5%</td>
+		<td>15</td>
+		<td>37.5%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>459</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_당산)신선희</td>
+		<td>28</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>7</td>
+		<td>25.0%</td>
+		<td>8</td>
+		<td>28.6%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>425</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>2</td>
+		<td>7.1%</td>
+		<td style="background: #EAEAEA">7.1%</td>
+		<td>0</td>
+		<td>7.1%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>3,764,200</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_당산)이경임</td>
+		<td>40</td>
+		<td>4</td>
+		<td>10.0%</td>
+		<td>13</td>
+		<td>32.5%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>395</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>1</td>
+		<td>2.5%</td>
+		<td style="background: #EAEAEA">2.5%</td>
+		<td>0</td>
+		<td>2.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>2,317,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_당산)이창균</td>
+		<td>30</td>
+		<td>11</td>
+		<td>36.7%</td>
+		<td>7</td>
+		<td>23.3%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>410</td>
+		<td style="background: #EAEAEA">4</td>
+		<td>3</td>
+		<td>10.0%</td>
+		<td style="background: #EAEAEA">13.3%</td>
+		<td>0</td>
+		<td>13.3%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>8,398,400</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_당산)임남희</td>
+		<td>41</td>
+		<td>3</td>
+		<td>7.3%</td>
+		<td>13</td>
+		<td>31.7%</td>
+		<td>3</td>
+		<td>7.3%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>458</td>
+		<td style="background: #EAEAEA">5</td>
+		<td>5</td>
+		<td>12.2%</td>
+		<td style="background: #EAEAEA">12.2%</td>
+		<td>0</td>
+		<td>12.2%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>9,555,500</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_당산)임소영</td>
+		<td>42</td>
+		<td>5</td>
+		<td>11.9%</td>
+		<td>13</td>
+		<td>31.0%</td>
+		<td>8</td>
+		<td>19.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>372</td>
+		<td style="background: #EAEAEA">3</td>
+		<td>2</td>
+		<td>4.8%</td>
+		<td style="background: #EAEAEA">7.1%</td>
+		<td>0</td>
+		<td>7.1%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>5,791,300</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_당산)황인태</td>
+		<td>41</td>
+		<td>11</td>
+		<td>26.8%</td>
+		<td>10</td>
+		<td>24.4%</td>
+		<td>1</td>
+		<td>2.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>449</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>2</td>
+		<td>4.9%</td>
+		<td style="background: #EAEAEA">4.9%</td>
+		<td>0</td>
+		<td>4.9%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>4,634,200</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_유성)공도연</td>
+		<td>41</td>
+		<td>6</td>
+		<td>14.6%</td>
+		<td>11</td>
+		<td>26.8%</td>
+		<td>2</td>
+		<td>4.9%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>301</td>
+		<td style="background: #EAEAEA">3</td>
+		<td>3</td>
+		<td>7.3%</td>
+		<td style="background: #EAEAEA">7.3%</td>
+		<td>0</td>
+		<td>7.3%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>12,748,400</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_유성)김영미</td>
+		<td>42</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>17</td>
+		<td>40.5%</td>
+		<td>10</td>
+		<td>23.8%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>305</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>2</td>
+		<td>4.8%</td>
+		<td style="background: #EAEAEA">4.8%</td>
+		<td>0</td>
+		<td>4.8%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>14,198,400</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_유성)맹마리아</td>
+		<td>38</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>16</td>
+		<td>42.1%</td>
+		<td>4</td>
+		<td>10.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>289</td>
+		<td style="background: #EAEAEA">3</td>
+		<td>2</td>
+		<td>5.3%</td>
+		<td style="background: #EAEAEA">7.9%</td>
+		<td>0</td>
+		<td>7.9%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>9,561,300</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_유성)유진실</td>
+		<td>37</td>
+		<td>4</td>
+		<td>10.8%</td>
+		<td>16</td>
+		<td>43.2%</td>
+		<td>10</td>
+		<td>27.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>337</td>
+		<td style="background: #EAEAEA">4</td>
+		<td>3</td>
+		<td>8.1%</td>
+		<td style="background: #EAEAEA">10.8%</td>
+		<td>0</td>
+		<td>10.8%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>11,008,400</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_유성)이윤경</td>
+		<td>37</td>
+		<td>3</td>
+		<td>8.1%</td>
+		<td>15</td>
+		<td>40.5%</td>
+		<td>5</td>
+		<td>13.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>333</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">5.4%</td>
+		<td>0</td>
+		<td>5.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>7,244,200</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_유성)이은미</td>
+		<td>41</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>10</td>
+		<td>24.4%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>405</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>2</td>
+		<td>4.9%</td>
+		<td style="background: #EAEAEA">4.9%</td>
+		<td>0</td>
+		<td>4.9%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>13,618,400</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_유성)장인비</td>
+		<td>49</td>
+		<td>23</td>
+		<td>46.9%</td>
+		<td>16</td>
+		<td>32.7%</td>
+		<td>2</td>
+		<td>4.1%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>383</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(ob)박하늘</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>1,971</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">DB보관</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>6,393</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)김진숙</td>
+		<td>41</td>
+		<td>8</td>
+		<td>19.5%</td>
+		<td>14</td>
+		<td>34.1%</td>
+		<td>2</td>
+		<td>4.9%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>419</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">2.4%</td>
+		<td>0</td>
+		<td>2.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)송은정</td>
+		<td>41</td>
+		<td>1</td>
+		<td>2.4%</td>
+		<td>22</td>
+		<td>53.7%</td>
+		<td>13</td>
+		<td>31.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>401</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>1</td>
+		<td>2.4%</td>
+		<td style="background: #EAEAEA">2.4%</td>
+		<td>0</td>
+		<td>2.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>3,187,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)이미란</td>
+		<td>44</td>
+		<td>5</td>
+		<td>11.4%</td>
+		<td>17</td>
+		<td>38.6%</td>
+		<td>5</td>
+		<td>11.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>349</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">2.3%</td>
+		<td>0</td>
+		<td>2.3%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>3,622,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)이미진</td>
+		<td>41</td>
+		<td>2</td>
+		<td>4.9%</td>
+		<td>18</td>
+		<td>43.9%</td>
+		<td>8</td>
+		<td>19.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>433</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)이은정</td>
+		<td>37</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>25</td>
+		<td>67.6%</td>
+		<td>6</td>
+		<td>16.2%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>375</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>1</td>
+		<td>2.7%</td>
+		<td style="background: #EAEAEA">5.4%</td>
+		<td>0</td>
+		<td>5.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>4,634,200</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)이진희</td>
+		<td>39</td>
+		<td>2</td>
+		<td>5.1%</td>
+		<td>11</td>
+		<td>28.2%</td>
+		<td>1</td>
+		<td>2.6%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>403</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>1</td>
+		<td>2.6%</td>
+		<td style="background: #EAEAEA">2.6%</td>
+		<td>0</td>
+		<td>2.6%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>2,317,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)전용애</td>
+		<td>39</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>22</td>
+		<td>56.4%</td>
+		<td>5</td>
+		<td>12.8%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>366</td>
+		<td style="background: #EAEAEA">3</td>
+		<td>1</td>
+		<td>2.6%</td>
+		<td style="background: #EAEAEA">7.7%</td>
+		<td>0</td>
+		<td>7.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>4,634,200</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)정경자</td>
+		<td>38</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>11</td>
+		<td>28.9%</td>
+		<td>5</td>
+		<td>13.2%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>376</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>1</td>
+		<td>2.6%</td>
+		<td style="background: #EAEAEA">5.3%</td>
+		<td>0</td>
+		<td>5.3%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>6,374,200</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)정경화</td>
+		<td>41</td>
+		<td>4</td>
+		<td>9.8%</td>
+		<td>17</td>
+		<td>41.5%</td>
+		<td>2</td>
+		<td>4.9%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>401</td>
+		<td style="background: #EAEAEA">3</td>
+		<td>3</td>
+		<td>7.3%</td>
+		<td style="background: #EAEAEA">7.3%</td>
+		<td>0</td>
+		<td>7.3%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>8,546,300</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)채현주</td>
+		<td>38</td>
+		<td>1</td>
+		<td>2.6%</td>
+		<td>9</td>
+		<td>23.7%</td>
+		<td>5</td>
+		<td>13.2%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>393</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">2.6%</td>
+		<td>0</td>
+		<td>2.6%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)최경주</td>
+		<td>38</td>
+		<td>5</td>
+		<td>13.2%</td>
+		<td>20</td>
+		<td>52.6%</td>
+		<td>5</td>
+		<td>13.2%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>435</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">2.6%</td>
+		<td>0</td>
+		<td>2.6%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>3,767,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)김경희</td>
+		<td>44</td>
+		<td>2</td>
+		<td>4.5%</td>
+		<td>26</td>
+		<td>59.1%</td>
+		<td>5</td>
+		<td>11.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>399</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>2</td>
+		<td>4.5%</td>
+		<td style="background: #EAEAEA">4.5%</td>
+		<td>0</td>
+		<td>4.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>12,171,300</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)김은미</td>
+		<td>1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)이진숙</td>
+		<td>42</td>
+		<td>1</td>
+		<td>2.4%</td>
+		<td>14</td>
+		<td>33.3%</td>
+		<td>15</td>
+		<td>35.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>393</td>
+		<td style="background: #EAEAEA">4</td>
+		<td>3</td>
+		<td>7.1%</td>
+		<td style="background: #EAEAEA">9.5%</td>
+		<td>0</td>
+		<td>9.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>9,851,300</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_송내)김주영</td>
+		<td>35</td>
+		<td>1</td>
+		<td>2.9%</td>
+		<td>6</td>
+		<td>17.1%</td>
+		<td>5</td>
+		<td>14.3%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>332</td>
+		<td style="background: #EAEAEA">5</td>
+		<td>5</td>
+		<td>14.3%</td>
+		<td style="background: #EAEAEA">14.3%</td>
+		<td>0</td>
+		<td>14.3%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>11,585,500</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_송내)이상인</td>
+		<td>35</td>
+		<td>6</td>
+		<td>17.1%</td>
+		<td>9</td>
+		<td>25.7%</td>
+		<td>8</td>
+		<td>22.9%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>325</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>2,099,000</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_송내)전은혜</td>
+		<td>35</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>8</td>
+		<td>22.9%</td>
+		<td>8</td>
+		<td>22.9%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>349</td>
+		<td style="background: #EAEAEA">4</td>
+		<td>3</td>
+		<td>8.6%</td>
+		<td style="background: #EAEAEA">11.4%</td>
+		<td>0</td>
+		<td>11.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>9,268,400</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_송내)정유선</td>
+		<td>35</td>
+		<td>2</td>
+		<td>5.7%</td>
+		<td>16</td>
+		<td>45.7%</td>
+		<td>6</td>
+		<td>17.1%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>340</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">5.7%</td>
+		<td>0</td>
+		<td>5.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>4,634,200</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_송내)조은주</td>
+		<td>35</td>
+		<td>7</td>
+		<td>20.0%</td>
+		<td>8</td>
+		<td>22.9%</td>
+		<td>13</td>
+		<td>37.1%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>368</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_송내)황윤경</td>
+		<td>35</td>
+		<td>3</td>
+		<td>8.6%</td>
+		<td>14</td>
+		<td>40.0%</td>
+		<td>2</td>
+		<td>5.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>277</td>
+		<td style="background: #EAEAEA">3</td>
+		<td>2</td>
+		<td>5.7%</td>
+		<td style="background: #EAEAEA">8.6%</td>
+		<td>0</td>
+		<td>8.6%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>6,951,300</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_송내)엄보혜</td>
+		<td>35</td>
+		<td>6</td>
+		<td>17.1%</td>
+		<td>6</td>
+		<td>17.1%</td>
+		<td>7</td>
+		<td>20.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>307</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>2</td>
+		<td>5.7%</td>
+		<td style="background: #EAEAEA">5.7%</td>
+		<td>0</td>
+		<td>5.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>4,634,200</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_송내)여선중</td>
+		<td>6</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_송내)이경란</td>
+		<td>35</td>
+		<td>8</td>
+		<td>22.9%</td>
+		<td>8</td>
+		<td>22.9%</td>
+		<td>3</td>
+		<td>8.6%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>390</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>1</td>
+		<td>2.9%</td>
+		<td style="background: #EAEAEA">5.7%</td>
+		<td>0</td>
+		<td>5.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>4,634,200</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_송내)장영훈</td>
+		<td>35</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>10</td>
+		<td>28.6%</td>
+		<td>4</td>
+		<td>11.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>387</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_송내)차미환</td>
+		<td>35</td>
+		<td>1</td>
+		<td>2.9%</td>
+		<td>3</td>
+		<td>8.6%</td>
+		<td>3</td>
+		<td>8.6%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>286</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>1</td>
+		<td>2.9%</td>
+		<td style="background: #EAEAEA">2.9%</td>
+		<td>0</td>
+		<td>2.9%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>2,317,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_송내)함서연</td>
+		<td>35</td>
+		<td>2</td>
+		<td>5.7%</td>
+		<td>15</td>
+		<td>42.9%</td>
+		<td>7</td>
+		<td>20.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>320</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>1</td>
+		<td>2.9%</td>
+		<td style="background: #EAEAEA">5.7%</td>
+		<td>0</td>
+		<td>5.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>4,634,200</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_송내)황영미</td>
+		<td>35</td>
+		<td>3</td>
+		<td>8.6%</td>
+		<td>11</td>
+		<td>31.4%</td>
+		<td>2</td>
+		<td>5.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>279</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_송내)황혜정</td>
+		<td>1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>233</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_강동)류제철</td>
+		<td>29</td>
+		<td>6</td>
+		<td>20.7%</td>
+		<td>7</td>
+		<td>24.1%</td>
+		<td>6</td>
+		<td>20.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>392</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>1</td>
+		<td>3.4%</td>
+		<td style="background: #EAEAEA">6.9%</td>
+		<td>0</td>
+		<td>6.9%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>4,634,200</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_강동)박시연</td>
+		<td>29</td>
+		<td>1</td>
+		<td>3.4%</td>
+		<td>12</td>
+		<td>41.4%</td>
+		<td>9</td>
+		<td>31.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>414</td>
+		<td style="background: #EAEAEA">4</td>
+		<td>2</td>
+		<td>6.9%</td>
+		<td style="background: #EAEAEA">13.8%</td>
+		<td>0</td>
+		<td>13.8%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>7,821,300</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_강동)신현정</td>
+		<td>40</td>
+		<td>6</td>
+		<td>15.0%</td>
+		<td>10</td>
+		<td>25.0%</td>
+		<td>5</td>
+		<td>12.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>482</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>1</td>
+		<td>2.5%</td>
+		<td style="background: #EAEAEA">2.5%</td>
+		<td>0</td>
+		<td>2.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>2,317,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_강동)우미희</td>
+		<td>42</td>
+		<td>3</td>
+		<td>7.1%</td>
+		<td>23</td>
+		<td>54.8%</td>
+		<td>4</td>
+		<td>9.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>353</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>1</td>
+		<td>2.4%</td>
+		<td style="background: #EAEAEA">2.4%</td>
+		<td>0</td>
+		<td>2.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>2,317,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_강동)조양훈</td>
+		<td>41</td>
+		<td>11</td>
+		<td>26.8%</td>
+		<td>14</td>
+		<td>34.1%</td>
+		<td>8</td>
+		<td>19.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>305</td>
+		<td style="background: #EAEAEA">3</td>
+		<td>2</td>
+		<td>4.9%</td>
+		<td style="background: #EAEAEA">7.3%</td>
+		<td>0</td>
+		<td>7.3%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>6,951,300</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_강동)조윤정</td>
+		<td>40</td>
+		<td>3</td>
+		<td>7.5%</td>
+		<td>13</td>
+		<td>32.5%</td>
+		<td>6</td>
+		<td>15.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>464</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">2.5%</td>
+		<td>0</td>
+		<td>2.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_강동)최예은</td>
+		<td>40</td>
+		<td>2</td>
+		<td>5.0%</td>
+		<td>18</td>
+		<td>45.0%</td>
+		<td>5</td>
+		<td>12.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>465</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>1</td>
+		<td>2.5%</td>
+		<td style="background: #EAEAEA">5.0%</td>
+		<td>0</td>
+		<td>5.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>5,504,200</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_강동)함유비</td>
+		<td>40</td>
+		<td>6</td>
+		<td>15.0%</td>
+		<td>13</td>
+		<td>32.5%</td>
+		<td>4</td>
+		<td>10.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>441</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>1</td>
+		<td>2.5%</td>
+		<td style="background: #EAEAEA">2.5%</td>
+		<td>0</td>
+		<td>2.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>2,027,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)김춘화</td>
+		<td>38</td>
+		<td>2</td>
+		<td>5.3%</td>
+		<td>18</td>
+		<td>47.4%</td>
+		<td>1</td>
+		<td>2.6%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>345</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">2.6%</td>
+		<td>0</td>
+		<td>2.6%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>7,534,200</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)박연정</td>
+		<td>39</td>
+		<td>1</td>
+		<td>2.6%</td>
+		<td>5</td>
+		<td>12.8%</td>
+		<td>3</td>
+		<td>7.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>453</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">2.6%</td>
+		<td>0</td>
+		<td>2.6%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)박지연</td>
+		<td>12</td>
+		<td>1</td>
+		<td>8.3%</td>
+		<td>7</td>
+		<td>58.3%</td>
+		<td>2</td>
+		<td>16.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>325</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)신미경</td>
+		<td>42</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>17</td>
+		<td>40.5%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>385</td>
+		<td style="background: #EAEAEA">3</td>
+		<td>1</td>
+		<td>2.4%</td>
+		<td style="background: #EAEAEA">7.1%</td>
+		<td>0</td>
+		<td>7.1%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>10,431,300</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)양지현</td>
+		<td>40</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>17</td>
+		<td>42.5%</td>
+		<td>13</td>
+		<td>32.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>454</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>1</td>
+		<td>2.5%</td>
+		<td style="background: #EAEAEA">2.5%</td>
+		<td>0</td>
+		<td>2.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>2,317,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)이은영C</td>
+		<td>39</td>
+		<td>4</td>
+		<td>10.3%</td>
+		<td>14</td>
+		<td>35.9%</td>
+		<td>1</td>
+		<td>2.6%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>374</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)이지연B</td>
+		<td>37</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>18</td>
+		<td>48.6%</td>
+		<td>2</td>
+		<td>5.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>372</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">2.7%</td>
+		<td>0</td>
+		<td>2.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>4,057,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)정선아B</td>
+		<td>40</td>
+		<td>1</td>
+		<td>2.5%</td>
+		<td>20</td>
+		<td>50.0%</td>
+		<td>5</td>
+		<td>12.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>359</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>3,187,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_대전)정화정</td>
+		<td>43</td>
+		<td>3</td>
+		<td>7.0%</td>
+		<td>18</td>
+		<td>41.9%</td>
+		<td>3</td>
+		<td>7.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>506</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>1</td>
+		<td>2.3%</td>
+		<td style="background: #EAEAEA">2.3%</td>
+		<td>0</td>
+		<td>2.3%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>6,374,200</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_군자)김나연B</td>
+		<td>3</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>2</td>
+		<td>66.7%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>409</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">66.7%</td>
+		<td>0</td>
+		<td>66.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_군자)김선경</td>
+		<td>2</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_군자)박은경</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>177</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_군자)서순미</td>
+		<td>3</td>
+		<td>1</td>
+		<td>33.3%</td>
+		<td>2</td>
+		<td>66.7%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>215</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_군자)서양희</td>
+		<td>1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>188</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">200.0%</td>
+		<td>2</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_군자)여제이</td>
+		<td>3</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>1</td>
+		<td>33.3%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>562</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_군자)이미화</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>191</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_군자)이윤정B</td>
+		<td>2</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>2</td>
+		<td>100.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>228</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>1</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_군자)장소라</td>
+		<td>1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>1</td>
+		<td>100.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>492</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_군자)홍재형</td>
+		<td>4</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>152</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>1</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_강동)곽승찬</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>466</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_강동)김애령</td>
+		<td>37</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>19</td>
+		<td>51.4%</td>
+		<td>4</td>
+		<td>10.8%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>456</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">2.7%</td>
+		<td>0</td>
+		<td>2.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>1,737,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_강동)김혜정</td>
+		<td>29</td>
+		<td>6</td>
+		<td>20.7%</td>
+		<td>15</td>
+		<td>51.7%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>401</td>
+		<td style="background: #EAEAEA">3</td>
+		<td>3</td>
+		<td>10.3%</td>
+		<td style="background: #EAEAEA">10.3%</td>
+		<td>0</td>
+		<td>10.3%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>6,661,300</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_강동)박순철</td>
+		<td>40</td>
+		<td>1</td>
+		<td>2.5%</td>
+		<td>23</td>
+		<td>57.5%</td>
+		<td>5</td>
+		<td>12.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>404</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>1</td>
+		<td>2.5%</td>
+		<td style="background: #EAEAEA">5.0%</td>
+		<td>0</td>
+		<td>5.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>4,634,200</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_강동)신재욱</td>
+		<td>29</td>
+		<td>3</td>
+		<td>10.3%</td>
+		<td>10</td>
+		<td>34.5%</td>
+		<td>6</td>
+		<td>20.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>380</td>
+		<td style="background: #EAEAEA">4</td>
+		<td>3</td>
+		<td>10.3%</td>
+		<td style="background: #EAEAEA">13.8%</td>
+		<td>0</td>
+		<td>13.8%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>10,138,400</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_강동)이미경</td>
+		<td>40</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>19</td>
+		<td>47.5%</td>
+		<td>2</td>
+		<td>5.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>483</td>
+		<td style="background: #EAEAEA">2</td>
+		<td>2</td>
+		<td>5.0%</td>
+		<td style="background: #EAEAEA">5.0%</td>
+		<td>0</td>
+		<td>5.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>4,416,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_강동)이윤정</td>
+		<td>40</td>
+		<td>5</td>
+		<td>12.5%</td>
+		<td>16</td>
+		<td>40.0%</td>
+		<td>12</td>
+		<td>30.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>384</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>1</td>
+		<td>2.5%</td>
+		<td style="background: #EAEAEA">2.5%</td>
+		<td>0</td>
+		<td>2.5%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>2,317,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_유성)강새봄</td>
+		<td>39</td>
+		<td>4</td>
+		<td>10.3%</td>
+		<td>12</td>
+		<td>30.8%</td>
+		<td>3</td>
+		<td>7.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>434</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_유성)고미희</td>
+		<td>1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_유성)석희정</td>
+		<td>37</td>
+		<td>1</td>
+		<td>2.7%</td>
+		<td>12</td>
+		<td>32.4%</td>
+		<td>3</td>
+		<td>8.1%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>403</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">0.0%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_유성)정해란</td>
+		<td>40</td>
+		<td>3</td>
+		<td>7.5%</td>
+		<td>21</td>
+		<td>52.5%</td>
+		<td>6</td>
+		<td>15.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>401</td>
+		<td style="background: #EAEAEA">4</td>
+		<td>1</td>
+		<td>2.5%</td>
+		<td style="background: #EAEAEA">10.0%</td>
+		<td>0</td>
+		<td>10.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>5,766,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_유성)차미영</td>
+		<td>38</td>
+		<td>5</td>
+		<td>13.2%</td>
+		<td>18</td>
+		<td>47.4%</td>
+		<td>2</td>
+		<td>5.3%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>378</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>1</td>
+		<td>2.6%</td>
+		<td style="background: #EAEAEA">2.6%</td>
+		<td>0</td>
+		<td>2.6%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>12,171,300</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_인천)김병준</td>
+		<td>35</td>
+		<td>1</td>
+		<td>2.9%</td>
+		<td>11</td>
+		<td>31.4%</td>
+		<td>2</td>
+		<td>5.7%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>331</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td style="background: #EAEAEA">2.9%</td>
+		<td>0</td>
+		<td>2.9%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>0</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_인천)김영숙B</td>
+		<td>35</td>
+		<td>2</td>
+		<td>5.7%</td>
+		<td>5</td>
+		<td>14.3%</td>
+		<td>4</td>
+		<td>11.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>315</td>
+		<td style="background: #EAEAEA">4</td>
+		<td>4</td>
+		<td>11.4%</td>
+		<td style="background: #EAEAEA">11.4%</td>
+		<td>0</td>
+		<td>11.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>9,268,400</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_인천)박도영</td>
+		<td>35</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>9</td>
+		<td>25.7%</td>
+		<td>4</td>
+		<td>11.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>340</td>
+		<td style="background: #EAEAEA">1</td>
+		<td>1</td>
+		<td>2.9%</td>
+		<td style="background: #EAEAEA">2.9%</td>
+		<td>0</td>
+		<td>2.9%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>2,317,100</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_인천)위미호</td>
+		<td>35</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>17</td>
+		<td>48.6%</td>
+		<td>5</td>
+		<td>14.3%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>301</td>
+		<td style="background: #EAEAEA">4</td>
+		<td>4</td>
+		<td>11.4%</td>
+		<td style="background: #EAEAEA">11.4%</td>
+		<td>0</td>
+		<td>11.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>9,268,400</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_인천)이명희</td>
+		<td>35</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>13</td>
+		<td>37.1%</td>
+		<td>10</td>
+		<td>28.6%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>261</td>
+		<td style="background: #EAEAEA">4</td>
+		<td>3</td>
+		<td>8.6%</td>
+		<td style="background: #EAEAEA">11.4%</td>
+		<td>0</td>
+		<td>11.4%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>9,268,400</td>
+	
+	</tr>
+
+	<tr onmouseover="this.className='over'" onmouseout="this.className='out'">
+		<td>2026-09-04(금)</td>
+		<td style="text-align: center">(R_인천)조은혜</td>
+		<td>35</td>
+		<td>3</td>
+		<td>8.6%</td>
+		<td>18</td>
+		<td>51.4%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>00:00:00</td>
+		<td>292</td>
+		<td style="background: #EAEAEA">3</td>
+		<td>1</td>
+		<td>2.9%</td>
+		<td style="background: #EAEAEA">8.6%</td>
+		<td>0</td>
+		<td>8.6%</td>
+		<td>0</td>
+		<td>0</td>
+		<td style="background: #EAEAEA">0</td>
+		<td>0.0%</td>
+	
+
+		<td>6,951,300</td>
+	
+	</tr>
+
+	<tr>
+		<td>합 계</td>
+		<td> : </td>
+		<td>2,846</td>
+		<td>267</td>
+		<td>9.4%</td>
+		<td>1,047</td>
+		<td>36.8%</td>
+		<td>360</td>
+		<td>12.6%</td>
+		<td>0</td>
+		<td>0.0%</td>
+		<td>0</td>
+		
+		<td>0:0:0</td>
+		<td>40,259</td>
+		<td>146</td>
+		<td>94</td>
+		<td>3.3%</td>
+		<td>5.1%</td>
+		<td>4</td>
+		<td>5.1%</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0.0%</td>
+		
+		<td>374,676,800</td>
+		
+	</tr>
+	<tr><td colspan="26"></td></tr>
+
+</tbody></table>
+</div></body></html>
